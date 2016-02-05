@@ -1,0 +1,59 @@
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
+	margin: 0; padding: 0; border: 0;
+}
+
+body {
+	font: 28px/25px COCOMAT; color: #fff;
+}
+section {
+	overflow-x: hidden; height: 993px;
+}
+
+#first { 
+	background:url(images/bg1.jpg) left repeat; 
+
+}
+
+	#first p {
+		position: relative; top: 350px; left: 350px;
+		width: 888px; margin: 0 0 30px 0;
+	}
+	#first .btn a {
+		position: relative; top: 10px; left: 275px;
+	}
+	#first .logo {
+		position: relative; top: -180px; left: 100px;
+	}
+	
+#second { 
+	background:url(images/bg2.jpg) left repeat; 
+
+}
+
+	#second p {
+		position: relative; top: 450px; left: 350px;
+		width: 888px; margin: 0 0 30px 0;
+		color: #656464;
+	}
+	#second .btn a {
+		position: relative; top: 10px; left: 275px;
+	}
+	#second .logo {
+		position: relative; top: 10px; left: 100px;
+	}
+	
+#third { 
+	background:url(images/bg3.jpg) left repeat; 
+
+}
+
+	#third p {
+		position: relative; top: 450px; left: 350px;
+		width: 888px; margin: 0 0 30px 0;
+	}
+	#third .btn a {
+		position: relative; top: 10px; left: 275px;
+	}
+	#third .logo {
+		position: relative; top: 10px; left: 100px;
+	}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Bayani Carwash</title>
+<link href="styles.css" rel="stylesheet" />
+<link href="curtain.css" rel="stylesheet"/>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="curtain.js"></script>
+<script src="scripts.js"></script>
+</head>
+<body>
+	<ul class ="curtains">
+		<li>
+			<section id = "first">
+				<p>Welcome to Bayani Carwash! Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Phasellus imperdiet varius pellentesque. Proin malesuada justo vitae varius aliquam.
+					Proin in massa et purus semper consectetur quis vel sem. Praesent dapibus est orci,
+					quis ullamcorper lorem.</br>
+				<p class="btn"><a href="addTransaction.php" class="hvr-shrink"><img src="images\button1.png"/></a></p>
+				<p class="logo"><img src="images\logo.png"/></a></p>
+				</p>
+			</section>
+		</li>
+		<li>
+			<section id = "second">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Phasellus imperdiet varius pellentesque.
+					<p class="btn"><a href="addTransaction.php" class="hvr-shrink"><img src="images\button2.png"/></a></p>
+					<p class="logo"><img src="images\logo2.png"/></p>
+				</p>
+			</section>
+		</li>
+		<li>
+			<section id = "third">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Phasellus imperdiet varius pellentesque.
+					<p class="btn"><a href="addTransaction.php" class="hvr-shrink"><img src="images\button3.png"/></a></p>
+					<p class="logo"><img src="images\logo3.png"/></a></p>
+				</p>
+			</section>
+		</li>
+	</ul>
+	<p>http://cache1.asset-cache.net/xc/88343855.jpg?v=1&c=IWSAsset&k=2&d=49768722B86DC0FD0C391AAB7E9C179C5AAC370C23FA495B65043110762C77AF</p>
+	
+</body>
+</html>
