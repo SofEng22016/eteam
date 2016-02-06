@@ -3,7 +3,7 @@
 
 	if(!$_SESSION['loginUser']){// checks if the session was registered
 								// (security feature so that no one can access the admin page through the URL)
-		header("location: login.php?msg=Unable to access!</br>Please enter a Username and Password.");
+		header("location: login.php?msg=Unable to access! Please enter a Username and Password.");
 		
 	}else
 		header( 'Content-Type: text/html; charset=utf-8' ); // else, the system will continue on the admin page

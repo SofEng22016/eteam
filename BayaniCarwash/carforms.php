@@ -18,42 +18,36 @@
   </style>
 </head>
 <body class = "bg">
+<?php
+$insert_car = <<<EOD
 	
-  	<div class="jumbotron">
-    <h1 class="title">Car Details Form</h1>
- 	 </div>
- 	<div class="container">
-	</div>
-	
-	<div class="container">
-  	<form role="form">
+  	<div class="container">
+  	<form method="POST" action="insert_car.php" role="form">
    
    	<div class="form-group">
-   	<label>Car Model:</label>
-    <input type="text" class="form-control" id="carManufacturer" 
+   	<label>Car Details:</label>
+    <input type="text" class="form-control" id="carManufacturer" name="carManufacturer"
     	placeholder="Enter Car's Manufacturer" required="required">
-    <input type="text" class="form-control" id="carModel" 
+    <input type="text" class="form-control" id="carModel" name="carModel"
     	placeholder="Enter Car's Model Name" required="required">
+    <input type="text" class="form-control" id="carColor" name="carColor"
+    	placeholder="Enter Car's Color" >
     </div>
    
     <div class="form-group">
     <label>Car Plate Number:</label>
-    <input type="number" class="form-control" id="carPlateNum" 
-    	placeholder="Enter Car's Plate Number" >
+    <input type="text" class="form-control" id="carPlateNum" name="carPlateNum"
+    	placeholder="Enter Car's Plate Number" required="required">
     </div>
     
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default" id="carEntry" name="carEntry">Submit</button>
   	
   	</form>
 	</div>
+EOD;
 
-	
-	
-	<div class="container">                
-  	<ul class="pager">
-    <li class="previous"><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-    <li class="next"><a href="#"> <span class="glyphicon glyphicon-menu-right"></span></a></li>
- 	 </ul>
-	</div>
+	echo "<div class='jumbotron'><h1 class='title'>Car Details Form</h1></div>";
+	echo $insert_car;
+?>
 </body>
 </html>
