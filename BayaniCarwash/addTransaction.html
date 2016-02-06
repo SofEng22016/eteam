@@ -1,18 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Transaction Window</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+  body {
+ 	 background-image: url("images/background3.jpg");
+  }
+  h1.title{
+     text-align: center;
+     font-family: serif;
+  }
+  </style>
+
 </head>
-    <body>
-    <div align="center">
-    <h2>Transaction Window</h2><p>
-    <hr color="black">
-    </div>
+   <body class="bg">
+   <div class="jumbotron">
+    <h1 class="title">Transaction Window</h1>
+ 	 </div>
+ 	 
+ 	<div class="container">
+
     <form action="getData.php" method="post">  
-        
-                Service Availed: <br>
-                <input type="checkbox" name="Name" value="WASH AND WAX"/>WASH & WAX<br>
+        	
+                <label>Service Availed:</label> 
+                <br>
+                <div class="form-group">
+                <input type="checkbox" name="Name" value="WASH AND WAX"/>WASH AND WAX<br>
                 <input type="checkbox" name="Name1" value="WASH"/>WASH<br>
                 <input type="checkbox" name="Name2" value="WAX"/>WAX<br>
                 <input type="checkbox" name="Name3" value="Asphalt Removal"/>Asphalt Removal<br>
@@ -21,13 +39,20 @@
                 <input type="checkbox" name="Name6" value="Tire Black"/>Tire Black<br>
                 <input type="checkbox" name="Name7" value="Interior Detailing"/>Interior Detailing<br>
                 <input type="checkbox" name="Name8" value="Exterior Detailing"/>Exterior Detailing<br>
+                </div>
                 
-            
-                Payment:
-                <input type="Number" name="payment"/>
-           
-                <input type="submit"/>
+            	<!--PLEASE INDICATE MINIMUM AMOUNT TO BE PAYED -->
+            	
+                <label>Payment:</label>
+                <div class="form-group">
+                <input type="number" name="payment"/>
+           		</div>
+           		
+                <button type="submit" class="btn btn-default">Submit</button> 
                
     </form>
+    </div>
+    
+  
     </body>
 </html>
