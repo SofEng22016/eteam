@@ -22,6 +22,7 @@
 $insert_customer = <<<EOD
 
   	<div class="container">
+	<div class="well well-lg">
   	<form method="POST" action="insert_customer.php" role="form">
    
    	<div class="form-group">
@@ -41,6 +42,7 @@ $insert_customer = <<<EOD
     <button type="submit" class="btn btn-default" id="customerEntry" name="customerEntry" >Submit</button>
   	
   	</form>
+	</div>
 	</div>
 
 	<div class="container">                

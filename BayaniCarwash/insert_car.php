@@ -1,23 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Car Details Form</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
- <style>
-  body {
- 	 background-image: url("images/background3.jpg");
-  }
-  h1.title{
-     text-align: center;
-     font-family: serif;
-  }
-</style>
-</head>
-	<body class="bg">
 <?php
 	
 	if(isset($_POST['carEntry'])){
@@ -37,20 +17,16 @@
 		
 		$carPlateNum = stripslashes($carPlateNum);
 		
-		$insert = "INSERT INTO cars (plate_num, color, manufacturer, model)
+		$insert_car = "INSERT INTO cars (plate_num, color, manufacturer, model)
 		VALUES('$carPlateNum','$carColor','$carManufacturer','$carModel')";
+
+		session_start();
+		$_SESSION['car'] = $insert_car;
 		
-		mysqli_select_db($dbName);
-		$retval = mysqli_query($connect,$insert);
-		if($retval){
-			header("location: index.html");
-		}else{
-			header("location: login.php");
-		}
+		header("location: transaction.php");
+
 		mysqli_close($connect);
 	}else{
-		header("location: index.html");
+		header("location: carforms.php");
 	}
 ?>
-</body>
-</html>

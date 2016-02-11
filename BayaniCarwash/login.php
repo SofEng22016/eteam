@@ -22,9 +22,11 @@
 <?php
 	$login_form = <<<EOD
 	
+	
 	<div class="container">
 	</div>
 		<div class="container">
+		<div class="well well-lg">
 	<form method="POST" action="validation.php" role="form">
 		<div class="form-group">
 		<label>Username: </label>
@@ -39,6 +41,8 @@
 		<button type="submit" class="btn btn-default" id="login"/>Login</button>
 		
 	</form>
+		
+	</div>
 	</div>
 	
 	<div class="container">                
