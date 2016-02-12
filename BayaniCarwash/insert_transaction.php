@@ -11,6 +11,9 @@
 // 		mysqli_select_db($dbName);
 // 		$insertCust = mysqli_query($connect, $_SESSION['customer']);
 // 		$insertCar = mysqli_query($connect, $_SESSION['car']);
+// 		$fullName = $_SESSION['fullName'];
+// 		$temp = "INSERT INTO records (cust_id, car_id) SELECT customers.id, cars.id FROM customers INNER JOIN cars ON customers.fullname = cars.fullname WHERE customers.fullname = '$fullName'";
+// 		$mergeTables = mysqli_query($connect, $temp);
 
 		//The code below has not been tested so it may or may not produce any error.
 		$servicesChosen = array(); //This is where the data from the checkboxes would be inserted.
@@ -32,7 +35,7 @@
 		session_start();
 		$_SESSION['transaction'] = $insert_transaction;
 		
-		
+		session_destroy();
 		header("location: index.html");
 		
 		mysqli_close($connect);

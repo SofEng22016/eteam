@@ -8,6 +8,7 @@
 		$firstName = $_POST['firstName'];
 		$lastName = $_POST['lastName'];
 		$middleName = $_POST['middleName'];
+		$fullName = $firstName."_".$lastName;
 		
 		$tel = $_POST['telephoneNum'];
 		$cell = $_POST['cellphoneNum'];
@@ -21,11 +22,12 @@
 		$cell = stripslashes($cell);
 		$email = stripslashes($email);
 		
-		$insert_cust = "INSERT INTO customers (lastname, firstname, middlename, tel_num, contact_num, email)
-		VALUES('$lastName','$firstName','$middleName','$tel','$cell','$email')";
+		$insert_cust = "INSERT INTO customers (lastname, firstname, middlename, tel_num, contact_num, email,fullname)
+		VALUES('$lastName','$firstName','$middleName','$tel','$cell','$email','$fullName')";
 
 		session_start();
 		$_SESSION['customer'] = $insert_cust;
+		$_SESSION['fullName']=$fullName;
 
 		header("location: carforms.php");
 		

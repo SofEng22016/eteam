@@ -29,23 +29,23 @@ $insert_transaction = <<<EOD
     <div class="row">
 	<div class="col-sm-4">
 		<div class="form-group">
-        <input type="checkbox" name="Name[]" value="WASH AND WAX"/> Wash and Wax</br>
-        <input type="checkbox" name="Name[]" value="Asphalt Removal"/> Asphalt Removal<br>
-        <input type="checkbox" name="Name[]" value="Tire Black"/> Tire Black
+        <input type="checkbox" name="Name[]" value="washWax"/> Wash and Wax</br>
+        <input type="checkbox" name="Name[]" value="asphalt"/> Asphalt Removal<br>
+        <input type="checkbox" name="Name[]" value="tire"/> Tire Black
         </div>
 	</div>
     <div class="col-sm-4">
                 <div class="form-group">
-                <input type="checkbox" name="Name[]" value="WASH"/> Wash</br>
-                <input type="checkbox" name="Name[]" value="Armor All"/> Armor All</br>
-                <input type="checkbox" name="Name[]" value="Interior Detailing"/> Interior Detailing
+                <input type="checkbox" name="Name[]" value="wash"/> Wash</br>
+                <input type="checkbox" name="Name[]" value="armor"/> Armor All</br>
+                <input type="checkbox" name="Name[]" value="intDetail"/> Interior Detailing
 
                 </div>
     </div>
     <div class="col-sm-4">
-    	<input type="checkbox" name="Name[]" value="WAX"/> Wax</br>
-    	<input type="checkbox" name="Name[]" value="Vacuum"/> Vacuum<br>
-        <input type="checkbox" name="Name[]" value="Exterior Detailing"/> Exterior Detailing
+    	<input type="checkbox" name="Name[]" value="wax"/> Wax</br>
+    	<input type="checkbox" name="Name[]" value="vacuum"/> Vacuum<br>
+        <input type="checkbox" name="Name[]" value="extDetail"/> Exterior Detailing
     </div>
 
     </div>

@@ -5,9 +5,12 @@
 		define('DOC_ROOT', dirname(__FILE__));
 		include (DOC_ROOT.'/config.php');
 		
+		session_start();
+
 		$carManufacturer = $_POST['carManufacturer'];
 		$carModel = $_POST['carModel'];
 		$carColor = $_POST['carColor'];
+		$fullName = $_SESSION['fullName'];
 		
 		$carPlateNum = $_POST['carPlateNum'];
 		
@@ -17,10 +20,9 @@
 		
 		$carPlateNum = stripslashes($carPlateNum);
 		
-		$insert_car = "INSERT INTO cars (plate_num, color, manufacturer, model)
-		VALUES('$carPlateNum','$carColor','$carManufacturer','$carModel')";
+		$insert_car = "INSERT INTO cars (plate_num, color, manufacturer, model,fullname)
+		VALUES('$carPlateNum','$carColor','$carManufacturer','$carModel','$fullName')";
 
-		session_start();
 		$_SESSION['car'] = $insert_car;
 		
 		header("location: transaction.php");
