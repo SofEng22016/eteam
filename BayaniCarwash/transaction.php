@@ -55,7 +55,16 @@ $insert_transaction = <<<EOD
            		
         <button type="submit" class="btn btn-default" id="transact" name="transact">Submit</button> 
     </form>
+		
+	<form method="POST" action="transaction.php" role="form">
+	<div class="form-group">
+	<button type="submit" class="btn btn-default" id="resetTransactionForm" name="resetTransactionForm">Reset</button>
+	</div>
+	</form>	
+		
     </div>
+	</div>
+    
 EOD;
 
 	echo "<div class='jumbotron'><h1 class='title'>Transaction Window</h1></div>";

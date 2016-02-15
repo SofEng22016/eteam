@@ -22,7 +22,7 @@
 $insert_car = <<<EOD
 	
   	<div class="container">
-		<div class="well well-lg">
+	<div class="well well-lg">
   	<form method="POST" action="insert_car.php" role="form">
    
    	<div class="form-group">
@@ -44,6 +44,13 @@ $insert_car = <<<EOD
     <button type="submit" class="btn btn-default" id="carEntry" name="carEntry">Submit</button>
   	
   	</form>
+		
+	<form method="POST" action="carforms.php" role="form">
+	<div class="form-group">
+	<button type="submit" class="btn btn-default" id="resetCarForms" name="resetCarForms">Reset</button>
+	</div>
+	</form>	
+		
 	</div>
 	</div>
 EOD;

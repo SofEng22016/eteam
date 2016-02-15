@@ -40,8 +40,14 @@ $insert_customer = <<<EOD
     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address">
     </div>
     <button type="submit" class="btn btn-default" id="customerEntry" name="customerEntry" >Submit</button>
-  	
   	</form>
+	
+	<form method="POST" action="customerform.php" role="form">
+	<div class="form-group">
+	<button type="submit" class="btn btn-default" id="resetCustomerForm" name="resetCustomerForm">Reset</button>
+	</div>
+	</form>
+	
 	</div>
 	</div>
 
