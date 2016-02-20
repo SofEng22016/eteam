@@ -42,21 +42,30 @@ $insert_car = <<<EOD
     </div>
     
     <button type="submit" class="btn btn-default" id="carEntry" name="carEntry">Submit</button>
-  	
-  	</form>
-		
-	<form method="POST" action="carforms.php" role="form">
-	<div class="form-group">
-	<button type="submit" class="btn btn-default" id="resetCarForms" name="resetCarForms">Reset</button>
-	</div>
-	</form>	
+	<button type="reset" class="btn btn-default">Reset</button>
+	</form>
 		
 	</div>
+		<ul class="pagination">
+		<li class="previous"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+  		<li><a href="customerform.php">1</a></li>
+  		<li class="active"><a href="carforms.php">2</a></li>
+		<li><a href="transaction.php">3</a></li>
+		<li><a href="receipt.php">4</a></li>
+	</ul>
 	</div>
+	
 EOD;
 
 	echo "<div class='jumbotron'><h1 class='title'>Car Details Form</h1></div>";
 	echo $insert_car;
+	if(isset($_GET['msg'])){
+		$msg=$_GET['msg'];
+		if($msg!=''){
+			echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
+	
+		}
+	}
 ?>
 </body>
 </html>

@@ -53,7 +53,7 @@
 EOD;
 		echo "<div class='jumbotron'><h1 class='title'>Welcome!</h1></div>";
 		echo $login_form;
-		
+		if(isset($_GET['msg'])){
 		$msg=$_GET['msg'];
 		if($msg!=''){
 				
@@ -62,6 +62,7 @@ EOD;
 			}else{
 				echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
 			}
+		}
 		}
 	?>
 </body>

@@ -28,7 +28,7 @@
 			// registers the admin account and redirects to the admin page
 			session_start();
 			$_SESSION['loginUser']=$safeUsername;
-			header("location: admin.php");
+			header("location: adminPage.php");
 		}else{
 			// passes a message to the login screen and redirects it
 			$msg = "Wrong Username or Password. Please try again.";

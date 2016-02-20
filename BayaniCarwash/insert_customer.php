@@ -22,15 +22,20 @@
 		$cell = stripslashes($cell);
 		$email = stripslashes($email);
 		
-		$insert_cust = "INSERT INTO customers (lastname, firstname, middlename, tel_num, contact_num, email,fullname)
-		VALUES('$lastName','$firstName','$middleName','$tel','$cell','$email','$fullName')";
+		if($tel <= 0){
+			$msg="Invalid Phone Number.";
+			header("location: customerform.php?msg=$msg");
+		}else{
+			$insert_cust = "INSERT INTO customers (lastname, firstname, middlename, tel_num, contact_num, email,fullname)
+			VALUES('$lastName','$firstName','$middleName','$tel','$cell','$email','$fullName')";
+			
+			session_start();
+			$_SESSION['customer'] = $insert_cust;
+			$_SESSION['fullName']=$fullName;
+			
+			header("location: carforms.php");
+		}
 
-		session_start();
-		$_SESSION['customer'] = $insert_cust;
-		$_SESSION['fullName']=$fullName;
-
-		header("location: carforms.php");
-		
 		mysqli_close($connect);
 	}else{
 		header("location: customerform.php");

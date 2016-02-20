@@ -35,33 +35,35 @@ $insert_customer = <<<EOD
     <div class="form-group">
    	<label>Customer Contact Info</label>
     <input type="number" class="form-control" id="telephoneNum" name="telephoneNum" placeholder="Enter Telephone Number" 
-    		required="required" maxlength="7">
-    <input type="number" class="form-control" id="cellphoneNum" name="cellphoneNum" placeholder="Enter Cellphone Number" maxlength="11">
+    		required="required" max="9999999">
+    <input type="number" class="form-control" id="cellphoneNum" name="cellphoneNum" placeholder="Enter Cellphone Number">
     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address">
     </div>
     <button type="submit" class="btn btn-default" id="customerEntry" name="customerEntry" >Submit</button>
-  	</form>
-	
-	<form method="POST" action="customerform.php" role="form">
-	<div class="form-group">
 	<button type="submit" class="btn btn-default" id="resetCustomerForm" name="resetCustomerForm">Reset</button>
-	</div>
 	</form>
 	
 	</div>
-	</div>
-
-	<div class="container">                
-  	<ul class="pager">
-    <li class="previous"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
- 	 </ul>
+		<ul class="pagination">
+		<li class="previous"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+  		<li class="active"><a href="customerform.php">1</a></li>
+  		<li><a href="carforms.php">2</a></li>
+		<li><a href="transaction.php">3</a></li>
+		<li><a href="receipt.php">4</a></li>
+		</ul> 
 	</div>
 EOD;
 
 	echo "<div class='jumbotron'><h1 class='title'>Customer Details Form</h1></div>";
 	echo $insert_customer;
  	
-	
+	if(isset($_GET['msg'])){
+		$msg=$_GET['msg'];
+		if($msg!=''){
+			echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
+
+		}
+	}
 	
 	?>
 </body>

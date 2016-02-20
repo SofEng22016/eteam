@@ -28,8 +28,8 @@ $insert_transaction = <<<EOD
     <div class="row">
 	<div class="col-sm-4">
 		<div class="form-group">
-        <input type="checkbox" name="Name[]" value="Wash and Wax"/> Wash and Wax</br>
         <input type="checkbox" name="Name[]" value="Asphalt Removal"/> Asphalt Removal<br>
+		<input type="checkbox" name="Name[]" value="Vacuum"/> Vacuum<br>
         <input type="checkbox" name="Name[]" value="Tire Black"/> Tire Black
         </div>
 	</div>
@@ -43,7 +43,6 @@ $insert_transaction = <<<EOD
     </div>
     <div class="col-sm-4">
     	<input type="checkbox" name="Name[]" value="Wax"/> Wax</br>
-    	<input type="checkbox" name="Name[]" value="Vacuum"/> Vacuum<br>
         <input type="checkbox" name="Name[]" value="Exterior Detailing"/> Exterior Detailing
     </div>
 
@@ -54,21 +53,36 @@ $insert_transaction = <<<EOD
         </div>
            		
         <button type="submit" class="btn btn-default" id="transact" name="transact">Submit</button> 
-    </form>
-		
-	<form method="POST" action="transaction.php" role="form">
-	<div class="form-group">
-	<button type="submit" class="btn btn-default" id="resetTransactionForm" name="resetTransactionForm">Reset</button>
-	</div>
-	</form>	
+		<button type="reset" class="btn btn-default">Reset</button>
+
+	</form>
+		<p id="total"></p>
+		<script>
+			function addElements() {
+			    document.getElementById("total").innerHTML = "Hello World";
+			}
+		</script>
 		
     </div>
+		<ul class="pagination">
+		<li class="previous"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+  		<li><a href="customerform.php">1</a></li>
+  		<li><a href="carforms.php">2</a></li>
+		<li class="active"><a href="transaction.php">3</a></li>
+		<li><a href="receipt.php">4</a></li>
+		</ul>
 	</div>
-    
 EOD;
 
 	echo "<div class='jumbotron'><h1 class='title'>Transaction Window</h1></div>";
 	echo $insert_transaction;
+	if(isset($_GET['msg'])){
+		$msg=$_GET['msg'];
+		if($msg!=''){
+			echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
+	
+		}
+	}
 	?>
     </body>
 </html>
