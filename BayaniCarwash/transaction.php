@@ -23,30 +23,38 @@
 $insert_transaction = <<<EOD
  	<div class="container">
 	<div class="well well-lg">
-  	<label>Service Availed:</label> 
+  	<label>Service Availed:</label>
     <form action="insert_transaction.php" method="post" role="form">
     <div class="row">
+		
+		<div id="services">
+		
 	<div class="col-sm-4">
 		<div class="form-group">
-        <input type="checkbox" name="Name[]" value="Asphalt Removal"/> Asphalt Removal<br>
-		<input type="checkbox" name="Name[]" value="Vacuum"/> Vacuum<br>
-        <input type="checkbox" name="Name[]" value="Tire Black"/> Tire Black
+        <input type="checkbox" name="Name[]" id="1" value="Asphalt Removal" onclick="attachCheckboxHandlers()"/> Asphalt Removal<br>
+		<input type="checkbox" name="Name[]"  id="2" value="Vacuum" onclick="attachCheckboxHandlers()"/> Vacuum<br>
+        <input type="checkbox" name="Name[]" value="Tire Black" onclick="attachCheckboxHandlers()"/> Tire Black
         </div>
 	</div>
     <div class="col-sm-4">
                 <div class="form-group">
-                <input type="checkbox" name="Name[]" value="Wash"/> Wash</br>
-                <input type="checkbox" name="Name[]" value="Armor All"/> Armor All</br>
-                <input type="checkbox" name="Name[]" value="Interior Detailing"/> Interior Detailing
+                <input type="checkbox" name="Name[]" value="Wash" onclick="attachCheckboxHandlers()"/> Wash</br>
+                <input type="checkbox" name="Name[]" value="Armor All" onclick="attachCheckboxHandlers()"/> Armor All</br>
+                <input type="checkbox" name="Name[]" value="Interior Detailing" onclick="attachCheckboxHandlers()"/> Interior Detailing
 
                 </div>
     </div>
     <div class="col-sm-4">
-    	<input type="checkbox" name="Name[]" value="Wax"/> Wax</br>
-        <input type="checkbox" name="Name[]" value="Exterior Detailing"/> Exterior Detailing
+    	<input type="checkbox" name="Name[]" value="Wax" onclick="attachCheckboxHandlers()"/> Wax</br>
+        <input type="checkbox" name="Name[]" value="Exterior Detailing" onclick="attachCheckboxHandlers()"/> Exterior Detailing
     </div>
+		
+		</div>
 
     </div>
+		<label>Total:</label>
+		
+		<p>PhP <input type="text" name="total" class="num" size="6" value="0" readonly="readonly" /></p>
         <div class="form-group">
         <label>Payment:</label>
         <input type="number" name="payment" class="form-control" placeholder="Enter Payment"/>
@@ -56,12 +64,6 @@ $insert_transaction = <<<EOD
 		<button type="reset" class="btn btn-default">Reset</button>
 
 	</form>
-		<p id="total"></p>
-		<script>
-			function addElements() {
-			    document.getElementById("total").innerHTML = "Hello World";
-			}
-		</script>
 		
     </div>
 		<ul class="pagination">
@@ -72,6 +74,55 @@ $insert_transaction = <<<EOD
 		<li><a href="receipt.php">4</a></li>
 		</ul>
 	</div>
+
+	<script>
+	function attachCheckboxHandlers() {
+	
+	    var el = document.getElementById('services');
+	
+	    var tops = el.getElementsByTagName('input');
+	    
+	    for (var i=0, len=tops.length; i<len; i++) {
+	        if ( tops[i].type === 'checkbox' ) {
+	            tops[i].onclick = updateTotal;
+	        }
+	    }
+	}
+	    
+	function updateTotal(e) {
+
+	    var form = this.form;
+		var temp = this.value;
+			if(this.value == "Asphalt Removal"){
+				temp = 80;
+			}else if(this.value == "Vacuum"){
+				temp = 80;
+			}else if(this.value == "Tire Black"){
+				temp = 30;
+			}else if(this.value == "Wash"){
+				temp = 100;
+			}else if(this.value == "Armor All"){
+				temp = 80;
+			}else if(this.value == "Interior Detailing"){
+				temp = 3000;
+			}else if(this.value == "Wax"){
+				temp = 140;
+			}else if(this.value == "Exterior Detailing"){
+				temp = 3500;
+			}
+			
+		var val = parseFloat( form.elements['total'].value );
+	
+	    if ( this.checked ) {
+	        val += parseFloat(temp);
+	    } else {
+	        val -= parseFloat(temp);
+	    }
+	
+	    form.elements['total'].value = val;
+	}
+	attachCheckboxHandlers();
+	</script>	
 EOD;
 
 	echo "<div class='jumbotron'><h1 class='title'>Transaction Window</h1></div>";
