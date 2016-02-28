@@ -36,7 +36,7 @@
     <div class = "container">
 		<div class ="well well-lg">
 			<div class="jumbotron">
-				<h1>List of Transactions</h1>
+				<h1>Last Transaction</h1>
   			<hr/>
   			<?php 
   				$dbhost = "localhost";
@@ -46,13 +46,20 @@
 	    
 				$connect = mysqli_connect($dbhost,$dbuser,$dbpass,$dbName) or die("ERROR: Database connection failed");
   				
-  				$query = "SELECT * FROM transactions WHERE id = LAST_INSERT_ID()";
+  				$query = "select * from transactions";
   				$result = mysqli_query($connect, $query)
   						or die("Error querying database.");
-  				if($row = mysqli_fetch_array($result)!= null) {
+  				$lastId = (mysqli_num_rows($result));
+  				$query = "select * from transactions where id='$lastId'";
+  				$result = mysqli_query($connect, $query)
+  				or die("Error querying database.");
+  				if($result != null) {
+  			  	$row = mysqli_fetch_assoc($result);
 				echo '<table>';
-				echo '<tr><th>ID</th><th>Service ID</th><th>Record ID</th><th>Total Amount
-							</th><th>Payment</th><th>Change</th></tr>';
+				echo '<tr><th>ID&nbsp;&nbsp;</th><th>Service ID&nbsp;&nbsp;
+						</th><th>Record ID&nbsp;&nbsp;</th><th>Total Amount&nbsp;&nbsp;
+							</th><th>Payment&nbsp;&nbsp;</th><th>Change&nbsp;&nbsp;
+								</th></tr>';
 				echo '<tr><td>' . $row['id'] . '</td>';
 				echo '<td>' . $row['service_id'] . '</td>';
 				echo '<td>' . $row['record_id'] . '</td>';
@@ -60,8 +67,11 @@
 				echo '<td>' . $row['payment'] . '</td>';
 				echo '<td>' . $row['change_'] . '</td>';
 				echo '</table>';
+				
 				mysqli_close($connect);
-  				} else {
+				}
+				
+  			 	else {
   					echo "<h2>No transactions available.</h2>";
   					mysqli_close($connect);
   				}

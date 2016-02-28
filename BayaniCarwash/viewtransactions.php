@@ -49,10 +49,13 @@
   				$query = "SELECT * FROM transactions";
   				$result = mysqli_query($connect, $query)
   						or die("Error querying database.");
-  				if($row = mysqli_fetch_array($result)!= null) {
+  				if($result != null) {
+  			
 				echo '<table>';
-				echo '<tr><th>ID</th><th>Service ID</th><th>Record ID</th><th>Total Amount
-							</th><th>Payment</th><th>Change</th></tr>';
+				echo '<tr><th>ID&nbsp;&nbsp;</th><th>Service ID&nbsp;&nbsp;
+						</th><th>Record ID&nbsp;&nbsp;</th><th>Total Amount&nbsp;&nbsp;
+							</th><th>Payment&nbsp;&nbsp;</th><th>Change&nbsp;&nbsp;
+								</th></tr>';
 				while ($row = mysqli_fetch_array($result)) {
 				echo '<tr><td>' . $row['id'] . '</td>';
 				echo '<td>' . $row['service_id'] . '</td>';
