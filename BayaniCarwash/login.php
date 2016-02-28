@@ -1,3 +1,14 @@
+<?php 
+	session_start(); // starts the session
+
+	if(isset($_SESSION['loginUser'])){// checks if the session was registered
+								// (security feature so that no one can access the admin page through the URL)
+		header("location: adminPage.php");
+		
+	}else
+		header('Content-Type: text/html; charset=utf-8'); // else, the system will continue on the admin page
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin Login</title>
 <link rel="tab icon" href="images\tire.ico">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
@@ -13,8 +24,7 @@
  	 background-image: url("images/background3.jpg");
   }
   h1.title{
-     text-align: center;
-     font-family: serif;
+     text-align: left;
   }
   </style>
 </head>
@@ -24,6 +34,7 @@
 	
 	
 	<div class="container">
+			<div class='page-header'><h1 class='title'>Admin Login</h1></div>
 	</div>
 		<div class="container">
 		<div class="well well-lg">
@@ -44,14 +55,20 @@
 		
 	</div>
 	</div>
-	
-	<div class="container">                
-  	<ul class="pager">
-    <li class="previous"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
- 	 </ul>
-	</div>
 EOD;
-		echo "<div class='jumbotron'><h1 class='title'>Welcome!</h1></div>";
+		echo "<nav class='navbar navbar-inverse'>
+  <div class='container-fluid'>
+    <div class='navbar-header'>
+      <a class='navbar-brand' href='index.html'>Bayani Carwash</a>
+    </div>
+    <ul class='nav navbar-nav'>
+      <li><a href='index.html'>Home</a></li>
+    </ul>
+    <ul class='nav navbar-nav navbar-right'>
+      <li class='active'><a href='login.php'><span class='glyphicon glyphicon-user'></span> Admin Login</a></li>
+    </ul>
+  </div>
+</nav>";
 		echo $login_form;
 		if(isset($_GET['msg'])){
 		$msg=$_GET['msg'];
@@ -64,6 +81,7 @@ EOD;
 			}
 		}
 		}
+		echo "<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>";
 	?>
 </body>
 </html>

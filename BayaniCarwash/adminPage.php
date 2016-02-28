@@ -9,56 +9,66 @@
 		header( 'Content-Type: text/html; charset=utf-8' ); // else, the system will continue on the admin page
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
-<title>Admin Page</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Login</title>
+<link rel="tab icon" href="images\tire.ico">
+<link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link href="styles.css" rel="stylesheet" />
- <style>
+<style>
   body {
- 	 background-image: url("images/carbon_fibre_big.png");
+ 	 background-image: url("images/background3.jpg");
   }
   h1.title{
-     text-align: center;
-     font-family: serif;
-    
-
+     text-align: left;
   }
-  .addCar{
-  	background-image: url("images/polonez_car.png")
-  }
-  
 
   </style>
-
-
 </head>
-    <body>
-    <div class="container">
-    <div class="jumbotron addCar">
-    	<h1 class="title"><font color="black">Admin Page</font></h1>
-    	
+<body class = "bg">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Bayani Carwash</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Admin Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+    <div class="page-header">
+    	<h1 class="title"><font color="black">Welcome, <?php echo $_SESSION['loginUser']?></font></h1></div>
+    <div clas ="well well-lg">
     
-    	 <button type="button" class="btn btn-primary btn-block addCar hvr-shrink" >
-    	 <font color="black" size="30">Insert Text Here</font></button>
+    	 <button type="button" class="btn btn-default btn-block addCar hvr-shrink" >
+    	 <font color="black" size="30">Last Transaction</font></button>
     	 <br><br>
     	 
-    	 <button type="button" class="btn btn-primary btn-block addCar hvr-shrink">
-    	 <font color="black" size="30">Insert Text Here</font></button>
+    	 <button type="button" class="btn btn-default btn-block addCar hvr-shrink">
+    	 <font color="black" size="30">All Transactions</font></button>
     	 <br><br>
     	 
-    	 <button type="button" class="btn btn-primary btn-block addCar hvr-shrink">
-    	 <font color="black" size="30">Insert Text Here</font></button>
+    	 <button type="button" class="btn btn-default btn-block addCar hvr-shrink">
+    	 <font color="black" size="30">Reports</font></button>
     	 <br><br>
     	 <form action="logout.php">
-    	 	<button type="submit" class="btn btn-primary btn-block addCar hvr-shrink">
+    	 	<button type="submit" class="btn btn-default btn-block addCar hvr-shrink">
     	 </form>
     	 <font color="black" size="30">Logout</font></button>
+    </div>
+    
+    <hr/>
+    <i>Powered by E-Team&copy;</i>
     
     </div>
     </body>
