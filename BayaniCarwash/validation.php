@@ -8,7 +8,7 @@
 	define('DOC_ROOT', dirname(__FILE__)); // needed to set connection 
 	$user = $_POST['userName'];
 	$pass = $_POST['pass'];
-
+	
 	if(isset($user, $pass)){
 		ob_start(); // starts a new output buffer
 		include (DOC_ROOT.'/config.php'); // sets database connection config.php

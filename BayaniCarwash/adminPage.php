@@ -48,19 +48,23 @@
     <div class="container">
     <div class="page-header">
     	<h1 class="title"><font color="black">Welcome, <?php echo $_SESSION['loginUser']?></font></h1></div>
-    <div clas ="well well-lg">
+    <div class ="well well-lg">
     
-    	 <button type="button" class="btn btn-default btn-block addCar hvr-shrink" >
-    	 <font color="black" size="30">Last Transaction</font></button>
+    	 <a href="viewlasttransact.php" class="btn btn-default btn-block addCar hvr-shrink" role="button">
+    	 <font color="black" size="30">Last Transaction</font>
+    	 </a>
+    	 <br><br>
+    	
+    	 <a href="viewtransactions.php" class="btn btn-default btn-block addCar hvr-shrink" role="button">
+    	 <font color="black" size="30">All Transactions</font>
+    	 </a>
+    	 <br><br>
+  
+		 <a href="#" class="btn btn-default btn-block addCar hvr-shrink" role="button">
+    	 <font color="black" size="30">Reports</font>
+    	 </a>
     	 <br><br>
     	 
-    	 <button type="button" class="btn btn-default btn-block addCar hvr-shrink">
-    	 <font color="black" size="30">All Transactions</font></button>
-    	 <br><br>
-    	 
-    	 <button type="button" class="btn btn-default btn-block addCar hvr-shrink">
-    	 <font color="black" size="30">Reports</font></button>
-    	 <br><br>
     	 <form action="logout.php">
     	 	<button type="submit" class="btn btn-default btn-block addCar hvr-shrink">
     	 </form>
