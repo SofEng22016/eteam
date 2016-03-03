@@ -1,7 +1,7 @@
 <?php
 	$dbhost = "localhost";
-	$dbuser = "neigelYap";
-	$dbpass = "qwerty";
+	$dbuser = "root";
+	$dbpass = "";
 	$dbName = "bayanicarwash";
 	    
 	$connect = mysqli_connect($dbhost,$dbuser,$dbpass,$dbName) or die("ERROR: Database connection failed");

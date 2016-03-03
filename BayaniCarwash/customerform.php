@@ -23,7 +23,7 @@
 $insert_customer = <<<EOD
 
   	<div class="container">
-		<div class='page-header'><h1 class='title'>Customer Details Form</h1></div>
+		<div class='page-header'><h1 class='title'>Customer Info</h1></div>
 	<div class="well well-lg">
   	<form method="POST" action="insert_customer.php" role="form">
    
@@ -35,13 +35,13 @@ $insert_customer = <<<EOD
     </div>
     
     <div class="form-group">
-   	<label>Customer Contact Info</label>
+   	<label>Customer Contact Details</label>
     <input type="number" class="form-control" id="telephoneNum" name="telephoneNum" placeholder="Enter Telephone Number" 
     		required="required" max="9999999">
     <input type="number" class="form-control" id="cellphoneNum" name="cellphoneNum" placeholder="Enter Cellphone Number">
     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address">
     </div>
-    <button type="submit" class="btn btn-default" id="customerEntry" name="customerEntry" >Submit</button>
+    <button type="submit" class="btn btn-default" id="customerEntry" name="customerEntry" >Next</button>
 	<button type="submit" class="btn btn-default" id="resetCustomerForm" name="resetCustomerForm">Reset</button>
 	</form>
 	
@@ -58,25 +58,25 @@ EOD;
 	echo "<nav class='navbar navbar-inverse'>
 	  <div class='container-fluid'>
 	    <div class='navbar-header'>
-	      <a class='navbar-brand' href='index.html'>Bayani Carwash</a>
+	      <a class='navbar-brand' href='index.php'>Bayani Carwash</a>
 	    </div>
 	    <ul class='nav navbar-nav'>
-	      <li><a href='index.html'>Home</a></li>
+	      <li><a href='index.php'>Home</a></li>
 	    </ul>
 	    <ul class='nav navbar-nav navbar-right'>
 	      <li><a href='login.php'><span class='glyphicon glyphicon-user'></span> Admin Login</a></li>
 	    </ul>
 	  </div>
 	</nav>";
-	echo $insert_customer;
- 	
+
 	if(isset($_GET['msg'])){
 		$msg=$_GET['msg'];
 		if($msg!=''){
 			echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
-
+	
 		}
 	}
+	echo $insert_customer;
 	
 	echo "<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>";
 	

@@ -5,18 +5,19 @@
 		define('DOC_ROOT', dirname(__FILE__));
 		include (DOC_ROOT.'/config.php');
 		
-		session_start();
+// 		session_start();
 		$payment = $_POST['payment'];
 		if($payment < 0){
 			$msg="Invalid Payment.";
 			header("location: transaction.php?msg=$msg");
 		}else{
-			if(isset($_SESSION['customer']) && isset($_SESSION['car'])){
+
+			if(isset($_COOKIE['customer']) && isset($_COOKIE['car'])){
 		
 				mysqli_select_db($dbName);
-				$insertCust = mysqli_query($connect, $_SESSION['customer']);
-				$insertCar = mysqli_query($connect, $_SESSION['car']);
-				$fullName = $_SESSION['fullName'];
+				$insertCust = mysqli_query($connect, $_COOKIE['customer']);
+				$insertCar = mysqli_query($connect, $_COOKIE['car']);
+				$fullName = $_COOKIE['fullName'];
 				$temp = "INSERT INTO records (cust_id, car_id) SELECT customers.id, cars.id FROM customers INNER JOIN cars ON customers.fullname = cars.fullname WHERE customers.fullname = '$fullName'";
 				$mergeTables = mysqli_query($connect, $temp);
 		
@@ -64,21 +65,167 @@
 				}
 				else{
 					$change = ($payment - $total);
+					$date = date("Y/m/d");
+					$time = date("h:i:sa");
+					$dateTime = $date." ".$time;
 					
-					$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_) VALUES ('$services','$recordId','$total', '$payment','$change')";
+					$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$dateTime')";
 			
 					mysqli_query($connect,  $insert_transaction);
-					header("location: index.html");
+					header("location: index.php");
+					
+					setcookie('customer', $insert_cust, time()-3600);
+					setcookie('fullName', $fullName, time()-3600);
+					setcookie('car',$insert_car, time()-3600);
 					
 					mysqli_close($connect);
-					session_destroy();
+// 					session_destroy();
 				}
-			}else if(!isset($_SESSION['customer'])){
-				$msg="No Customer details found.";
-				header("location: transaction.php?msg=$msg");
-			}else if(!isset($_SESSION['car'])){
-				$msg="No Car details found.";
-				header("location: transaction.php?msg=$msg");
+			}else if(!isset($_COOKIE['customer']) && isset($_COOKIE['car'])){
+				mysqli_select_db($dbName);
+				$plate = $_COOKIE['plate'];
+					$insertCar = mysqli_query($connect, $_COOKIE['car']);
+					$fullName = $_COOKIE['fullName'];
+					$temp = "INSERT INTO records (cust_id, car_id) SELECT customers.id, cars.id FROM customers INNER JOIN cars ON customers.fullname = cars.fullname WHERE customers.fullname = '$fullName' AND cars.plate_num='$plate'";
+					$mergeTables = mysqli_query($connect, $temp);
+					
+					$servicesChosen = $_POST['Name'];
+					
+					$services="";
+					for($index = 0;$index < count($servicesChosen); $index++){
+						$temp2 = "SELECT services.id FROM services WHERE services.service_name = '$servicesChosen[$index]'";
+						$selection = mysqli_query($connect, $temp2);
+							
+						$output = mysqli_fetch_assoc($selection);
+						if($services == ""){
+							$services = $services.$output['id'];
+						}else{
+							$services = $services.", ".$output['id'];
+						}
+							
+					}
+					
+					$selectCust = "SELECT customers.id FROM customers WHERE fullname = '$fullName'";
+					$cust = mysqli_query($connect, $selectCust);
+					$fetch1 = mysqli_fetch_assoc($cust);
+					$customerId = $fetch1['id'];
+					
+					$selectCar = "SELECT cars.id FROM cars WHERE plate_num = '$plate' AND fullname = '$fullName'";
+					$car = mysqli_query($connect, $selectCar);
+					$fetch2 = mysqli_fetch_assoc($car);
+					$carId = $fetch2['id'];
+					
+					$select_record = "SELECT records.id FROM records WHERE records.cust_id = '$customerId' AND records.car_id = '$carId'";
+					$select = mysqli_query($connect, $select_record);
+					$records = mysqli_fetch_assoc($select);
+					$recordId = $records['id'];
+					
+					
+					$total=0;
+					for($index = 0;$index < count($servicesChosen); $index++){
+						$int = "SELECT services.price FROM services WHERE services.service_name = '$servicesChosen[$index]'";
+						$selection2 = mysqli_query($connect, $int);
+					
+						$output2 = mysqli_fetch_assoc($selection2);
+							
+						$total = ($total + $output2['price']);
+					
+					}
+					
+					if($payment < $total){
+						$msg="Invalid Payment.";
+						header("location: transaction.php?msg=$msg");
+					}
+					else{
+						$change = ($payment - $total);
+						$date = date("Y/m/d");
+						$time = date("h:i:sa");
+						$dateTime = $date." ".$time;
+							
+						$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$dateTime')";
+							
+						mysqli_query($connect,  $insert_transaction);
+						header("location: index.php");
+							
+						setcookie('customer', $insert_cust, time()-3600);
+						setcookie('fullName', $fullName, time()-3600);
+						setcookie('car',$insert_car, time()-3600);
+						setcookie('plate',$carPlateNum, time()-3600);
+							
+						mysqli_close($connect);
+						// 					session_destroy();
+					}
+				
+			}else{
+				mysqli_select_db($dbName);
+				
+				$servicesChosen = $_POST['Name'];
+				
+				$services="";
+				for($index = 0;$index < count($servicesChosen); $index++){
+					$temp2 = "SELECT services.id FROM services WHERE services.service_name = '$servicesChosen[$index]'";
+					$selection = mysqli_query($connect, $temp2);
+						
+					$output = mysqli_fetch_assoc($selection);
+					if($services == ""){
+						$services = $services.$output['id'];
+					}else{
+						$services = $services.", ".$output['id'];
+					}
+						
+				}
+			
+				$fullName = $_COOKIE['fullName'];
+				$plate = $_COOKIE['car'];
+				
+				$selectCust = "SELECT customers.id FROM customers WHERE fullname = '$fullName'";
+				$cust = mysqli_query($connect, $selectCust);
+				$fetch1 = mysqli_fetch_assoc($cust);
+				$customerId = $fetch1['id'];
+				
+				$selectCar = "SELECT cars.id FROM cars WHERE plate_num = '$plate' AND fullname = '$fullName'";
+				$car = mysqli_query($connect, $selectCar);
+				$fetch2 = mysqli_fetch_assoc($car);
+				$carId = $fetch2['id'];
+				
+				$select_record = "SELECT records.id FROM records WHERE records.cust_id = '$customerId' AND records.car_id = '$carId'";
+				$select = mysqli_query($connect, $select_record);
+				$records = mysqli_fetch_assoc($select);
+				$recordId = $records['id'];
+				
+				$total=0;
+				for($index = 0;$index < count($servicesChosen); $index++){
+					$int = "SELECT services.price FROM services WHERE services.service_name = '$servicesChosen[$index]'";
+					$selection2 = mysqli_query($connect, $int);
+				
+					$output2 = mysqli_fetch_assoc($selection2);
+						
+					$total = ($total + $output2['price']);
+				
+				}
+				
+				if($payment < $total){
+					$msg="Invalid Payment.";
+					header("location: transaction.php?msg=$msg");
+				}
+				else{
+					$change = ($payment - $total);
+					$date = date("Y/m/d");
+					$time = date("h:i:sa");
+					$dateTime = $date." ".$time;
+						
+					$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$dateTime')";
+						
+					mysqli_query($connect,  $insert_transaction);
+					header("location: index.php");
+						
+					setcookie('customer', $insert_cust, time()-3600);
+					setcookie('fullName', $fullName, time()-3600);
+					setcookie('car',$insert_car, time()-3600);
+						
+					mysqli_close($connect);
+					// 					session_destroy();
+				}
 			}
 		}
 	}else{

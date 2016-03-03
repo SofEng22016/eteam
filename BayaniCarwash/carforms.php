@@ -20,9 +20,9 @@
 <body class = "bg">
 <?php
 $insert_car = <<<EOD
-	
+
   	<div class="container">
-		<div class='page-header'><h1 class='title'>Car Details Form</h1></div>
+		<div class='page-header'><h1 class='title'>Car Details</h1></div>
 	<div class="well well-lg">
   	<form method="POST" action="insert_car.php" role="form">
    
@@ -42,7 +42,7 @@ $insert_car = <<<EOD
     	placeholder="Enter Car's Plate Number" required="required">
     </div>
     
-    <button type="submit" class="btn btn-default" id="carEntry" name="carEntry">Submit</button>
+    <button type="submit" class="btn btn-default" id="carEntry" name="carEntry">Next</button>
 	<button type="reset" class="btn btn-default">Reset</button>
 	</form>
 		
@@ -57,20 +57,27 @@ $insert_car = <<<EOD
 	
 EOD;
 
+	
 	echo "<nav class='navbar navbar-inverse'>
 	  <div class='container-fluid'>
 	    <div class='navbar-header'>
-	      <a class='navbar-brand' href='index.html'>Bayani Carwash</a>
+	      <a class='navbar-brand' href='index.php'>Bayani Carwash</a>
 	    </div>
 	    <ul class='nav navbar-nav'>
-	     <li><a href='index.html'>Home</a></li>
+	     <li><a href='index.php'>Home</a></li>
 	    </ul>
 	    <ul class='nav navbar-nav navbar-right'>
 	      <li><a href='login.php'><span class='glyphicon glyphicon-user'></span> Admin Login</a></li>
 	    </ul>
-	  </div>
+    </div>
 	</nav>";
-	echo $insert_car;
+	if(!isset($_COOKIE['fullName'])){
+		echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
+		echo "<h2><center>Redirecting you to the previous page...</center></h2>";
+		header("Refresh:2; url=customerform.php");
+		exit;
+	}
+	
 	if(isset($_GET['msg'])){
 		$msg=$_GET['msg'];
 		if($msg!=''){
@@ -78,6 +85,8 @@ EOD;
 	
 		}
 	}
+	echo $insert_car;
+	
 	echo "<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>";
 ?>
 </body>

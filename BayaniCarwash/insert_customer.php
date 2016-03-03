@@ -8,7 +8,7 @@
 		$firstName = $_POST['firstName'];
 		$lastName = $_POST['lastName'];
 		$middleName = $_POST['middleName'];
-		$fullName = $firstName."_".$lastName;
+			$fullName = $firstName." ".$lastName;
 		
 		$tel = $_POST['telephoneNum'];
 		$cell = $_POST['cellphoneNum'];
@@ -26,13 +26,22 @@
 			$msg="Invalid Phone Number.";
 			header("location: customerform.php?msg=$msg");
 		}else{
-			$insert_cust = "INSERT INTO customers (lastname, firstname, middlename, tel_num, contact_num, email,fullname)
-			VALUES('$lastName','$firstName','$middleName','$tel','$cell','$email','$fullName')";
 			
-			session_start();
-			$_SESSION['customer'] = $insert_cust;
-			$_SESSION['fullName']=$fullName;
+			$customerCheck = "SELECT * FROM customers WHERE fullname = '$fullName'";
+			$result = mysqli_query($connect, $customerCheck);
 			
+			if(mysqli_num_rows($result) > 0){
+				setcookie('fullName', $fullName);
+			}else{
+				$insert_cust = "INSERT INTO customers (lastname, firstname, middlename, tel_num, contact_num, email,fullname)
+				VALUES('$lastName','$firstName','$middleName','$tel','$cell','$email','$fullName')";
+				
+	// 			session_start();
+	// 			$_SESSION['customer'] = $insert_cust;
+	// 			$_SESSION['fullName']=$fullName;
+				setcookie('customer', $insert_cust);
+				setcookie('fullName', $fullName);
+			}
 			header("location: carforms.php");
 		}
 

@@ -22,7 +22,7 @@
 <?php 
 $insert_transaction = <<<EOD
  	<div class="container">
-		<div class='page-header'><h1 class='title'>Transaction Window</h1></div>
+		<div class='page-header'><h1 class='title'>Payment</h1></div>
 	<div class="well well-lg">
   	<label>Service Availed:</label>
     <form action="insert_transaction.php" method="post" role="form">
@@ -32,22 +32,22 @@ $insert_transaction = <<<EOD
 		
 	<div class="col-sm-4">
 		<div class="form-group">
-        <input type="checkbox" name="Name[]" id="1" value="Asphalt Removal" onclick="attachCheckboxHandlers()"/> Asphalt Removal<br>
-		<input type="checkbox" name="Name[]"  id="2" value="Vacuum" onclick="attachCheckboxHandlers()"/> Vacuum<br>
-        <input type="checkbox" name="Name[]" value="Tire Black" onclick="attachCheckboxHandlers()"/> Tire Black
+        <input type="checkbox" name="Name[]" id="1" value="Asphalt Removal" onclick="attachCheckboxHandlers()"/> Asphalt Removal (P80.00)<br>
+		<input type="checkbox" name="Name[]"  id="2" value="Vacuum" onclick="attachCheckboxHandlers()"/> Vacuum (P80.00)<br>
+        <input type="checkbox" name="Name[]" value="Tire Black" onclick="attachCheckboxHandlers()"/> Tire Black (P30.00)
         </div>
 	</div>
     <div class="col-sm-4">
                 <div class="form-group">
-                <input type="checkbox" name="Name[]" value="Wash" onclick="attachCheckboxHandlers()"/> Wash</br>
-                <input type="checkbox" name="Name[]" value="Armor All" onclick="attachCheckboxHandlers()"/> Armor All</br>
-                <input type="checkbox" name="Name[]" value="Interior Detailing" onclick="attachCheckboxHandlers()"/> Interior Detailing
+                <input type="checkbox" name="Name[]" value="Wash" onclick="attachCheckboxHandlers()"/> Wash (P100.00)</br>
+                <input type="checkbox" name="Name[]" value="Armor All" onclick="attachCheckboxHandlers()"/> Armor All (P80.00)</br>
+                <input type="checkbox" name="Name[]" value="Interior Detailing" onclick="attachCheckboxHandlers()"/> Interior Detailing (P3000.00)
 
                 </div>
     </div>
     <div class="col-sm-4">
-    	<input type="checkbox" name="Name[]" value="Wax" onclick="attachCheckboxHandlers()"/> Wax</br>
-        <input type="checkbox" name="Name[]" value="Exterior Detailing" onclick="attachCheckboxHandlers()"/> Exterior Detailing
+    	<input type="checkbox" name="Name[]" value="Wax" onclick="attachCheckboxHandlers()"/> Wax (P140.00)</br>
+        <input type="checkbox" name="Name[]" value="Exterior Detailing" onclick="attachCheckboxHandlers()"/> Exterior Detailing (P3500.00)
     </div>
 		
 		</div>
@@ -127,25 +127,37 @@ EOD;
 	echo "<nav class='navbar navbar-inverse'>
 	  <div class='container-fluid'>
 	    <div class='navbar-header'>
-	      <a class='navbar-brand' href='index.html'>Bayani Carwash</a>
+	      <a class='navbar-brand' href='index.php'>Bayani Carwash</a>
 	    </div>
 	    <ul class='nav navbar-nav'>
-	      <li><a href='index.html'>Home</a></li>
+	      <li><a href='index.php'>Home</a></li>
 	    </ul>
 	    <ul class='nav navbar-nav navbar-right'>
 	      <li><a href='login.php'><span class='glyphicon glyphicon-user'></span> Admin Login</a></li>
 	    </ul>
 	  </div>
 	</nav>";
-// 	echo "<div class='jumbotron'><h1 class='title'>Transaction Window</h1></div>";
-	echo $insert_transaction;
+		if(!isset($_COOKIE['fullName'])){
+			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
+			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
+			header("Refresh:2; url=customerform.php");
+			exit;
+		}else if(!isset($_COOKIE['car'])){
+			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
+			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
+			header("Refresh:2; url=carforms.php");
+			exit;
+		}
+	
 	if(isset($_GET['msg'])){
 		$msg=$_GET['msg'];
 		if($msg!=''){
 			echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
-	
+		
 		}
 	}
+	echo $insert_transaction;
+	
 	echo "<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>";
 	?>
     </body>

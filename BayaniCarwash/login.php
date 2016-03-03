@@ -59,28 +59,29 @@ EOD;
 		echo "<nav class='navbar navbar-inverse'>
   <div class='container-fluid'>
     <div class='navbar-header'>
-      <a class='navbar-brand' href='index.html'>Bayani Carwash</a>
+      <a class='navbar-brand' href='index.php'>Bayani Carwash</a>
     </div>
     <ul class='nav navbar-nav'>
-      <li><a href='index.html'>Home</a></li>
+      <li><a href='index.php'>Home</a></li>
     </ul>
     <ul class='nav navbar-nav navbar-right'>
       <li class='active'><a href='login.php'><span class='glyphicon glyphicon-user'></span> Admin Login</a></li>
     </ul>
   </div>
 </nav>";
-		echo $login_form;
 		if(isset($_GET['msg'])){
-		$msg=$_GET['msg'];
-		if($msg!=''){
-				
-			if($msg == 'You have logged out!'){
-				echo "<div class='alert alert-success'><strong>Success!</strong> ".$msg."</div>";
-			}else{
-				echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
+			$msg=$_GET['msg'];
+			if($msg!=''){
+		
+				if($msg == 'You have logged out!'){
+					echo "<div class='alert alert-success'><strong>Success!</strong> ".$msg."</div>";
+				}else{
+					echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
+				}
 			}
 		}
-		}
+		echo $login_form;
+		
 		echo "<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>";
 	?>
 </body>

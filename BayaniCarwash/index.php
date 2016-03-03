@@ -1,3 +1,9 @@
+<?php
+	setcookie('customer','', time()-3600);
+	setcookie('fullName','', time()-3600);
+	setcookie('car','', time()-3600);
+	setcookie('plate','', time()-3600);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +28,10 @@
    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">Bayani Carwash</a>
+      <a class="navbar-brand" href="index.php">Bayani Carwash</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
+      <li class="active"><a href="index.php">Home</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Admin Login</a></li>
