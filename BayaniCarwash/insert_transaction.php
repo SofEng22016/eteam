@@ -7,7 +7,11 @@
 		
 // 		session_start();
 		$payment = $_POST['payment'];
-		if($payment < 0){
+		$servicesChosen = $_POST['Name'];
+		if($servicesChosen == 0){
+			$msg="Please tick a service box.";
+			header("location: transaction.php?msg=$msg");
+		}else if($payment <= 0){
 			$msg="Invalid Payment.";
 			header("location: transaction.php?msg=$msg");
 		}else{
@@ -66,10 +70,8 @@
 				else{
 					$change = ($payment - $total);
 					$date = date("Y/m/d");
-					$time = date("h:i:sa");
-					$dateTime = $date." ".$time;
 					
-					$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$dateTime')";
+					$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$date')";
 			
 					mysqli_query($connect,  $insert_transaction);
 					header("location: index.php");
@@ -139,10 +141,8 @@
 					else{
 						$change = ($payment - $total);
 						$date = date("Y/m/d");
-						$time = date("h:i:sa");
-						$dateTime = $date." ".$time;
 							
-						$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$dateTime')";
+						$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$date')";
 							
 						mysqli_query($connect,  $insert_transaction);
 						header("location: index.php");
@@ -211,10 +211,8 @@
 				else{
 					$change = ($payment - $total);
 					$date = date("Y/m/d");
-					$time = date("h:i:sa");
-					$dateTime = $date." ".$time;
 						
-					$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$dateTime')";
+					$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) VALUES ('$services','$recordId','$total', '$payment','$change','$date')";
 						
 					mysqli_query($connect,  $insert_transaction);
 					header("location: index.php");

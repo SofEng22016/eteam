@@ -40,7 +40,7 @@
       <li><a href="index.php">Home</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Admin Login</a></li>
+      <li class='active'><a href="login.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
     </ul>
   </div>
 </nav>
@@ -51,24 +51,24 @@
     <div class ="well well-lg">
     
     	 <a href="viewlasttransact.php" class="btn btn-default btn-block addCar hvr-shrink" role="button">
-    	 <font color="black" size="30">Last Transaction</font>
+    	 <font color="black" size="30"><span class="glyphicon glyphicon-th-list"></span> Last Transaction</font>
     	 </a>
     	 <br><br>
     	
     	 <a href="viewtransactions.php" class="btn btn-default btn-block addCar hvr-shrink" role="button">
-    	 <font color="black" size="30">All Transactions</font>
+    	 <font color="black" size="30"><span class="glyphicon glyphicon-list-alt"></span> All Transactions</font>
     	 </a>
     	 <br><br>
   
-		 <a href="#" class="btn btn-default btn-block addCar hvr-shrink" role="button">
-    	 <font color="black" size="30">Reports</font>
+		 <a href="reports.php" class="btn btn-default btn-block addCar hvr-shrink" role="button">
+    	 <font color="black" size="30"><span class="glyphicon glyphicon-stats"></span> Reports</font>
     	 </a>
     	 <br><br>
     	 
     	 <form action="logout.php">
     	 	<button type="submit" class="btn btn-default btn-block addCar hvr-shrink">
     	 </form>
-    	 <font color="black" size="30">Logout</font></button>
+    	 <font color="black" size="30"><span class="glyphicon glyphicon-log-out"></span> Logout</font></button>
     </div>
     
     <hr/>

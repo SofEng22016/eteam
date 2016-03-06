@@ -34,11 +34,10 @@
     </nav>
     
     <div class = "container">
+    <div class='page-header'><h1 class='title'><span class="glyphicon glyphicon-list-alt"></span> All Transactions</h1></div>
 		<div class ="well well-lg">
-			<div class="jumbotron">
-				<h1>List of Transactions</h1>
-  			<hr/>
-  			<h4>Service Number Legend:</h4>
+			
+  			<legend>Service Number Legend:</legend>
   			<div align = "center">
   			<h3>1<small> - Wash (PhP100)</small> 2<small> - Wax (PhP140)</small> 3<small> - Asphalt Removal (PhP80)</small> 4<small> - Armor All (PhP80)</small></h3>
   			<h3>5<small> - Vacuum (PhP80)</small> 6<small> - Tire Black (PhP300)</small> 7<small> - Interior Detailing (PhP3000)</small> 8<small> - Exterior Detailing (PhP3500)</small></h3>
@@ -54,9 +53,9 @@
   				$query = "select * from transactions where id='$lastId'";
   				$result = mysqli_query($connect, $query);
   				if($lastId > 0) {
-  						echo "</table>";
-						echo "<table class='table'>";
-						echo "<thead><tr><th>#</th><th>Full Name</th><th>Car</th><th>Plate Num.</th><th>Services Availed</th><th>Total Amount</th><th>Payment</th><th>Change</th></tr></thead>";
+  						
+						echo "<table class='table table-striped table-hover'>";
+						echo "<thead><tr><th>#</th><th>Full Name</th><th>Car</th><th>Plate Num.</th><th>Services Availed</th><th>Total Amount</th><th>Payment</th><th>Change</th><th>Date</th></tr></thead>";
 						echo "<tbody>";
   					$row = mysqli_fetch_assoc($result);
   					while ($row = mysqli_fetch_array($result1)) {
@@ -74,20 +73,20 @@
 	  					$car = $carName['color']." ".$carName['manufacturer']." ".$carName['model'];
   					
   						
-  						echo "<tr><td>".$row['id']."</td><td>".$custName['fullname']."</td><td>$car</td><td>".$carName['plate_num']."</td><td>".$row['service_id']."</td><td>PhP".$row['total_amount']."</td><td>PhP".$row['payment']."</td><td>PhP".$row['change_']."</td></tr>";
+  						echo "<tr class='success'><td>".$row['id']."</td><td>".$custName['fullname']."</td><td>$car</td><td>".$carName['plate_num']."</td><td>".$row['service_id']."</td><td>PhP".$row['total_amount']."</td><td>PhP".$row['payment']."</td><td>PhP".$row['change_']."</td><td>".$row['date']."</td></tr>";
   					}
   					echo "</tbody>";
   					echo "</table>";
   					mysqli_close($connect);
   				}else {
-  					echo "<h2>No transactions available.</h2>";
+  					echo "<div class='alert alert-danger'>No transactions!</div>";
   					mysqli_close($connect);
   				}
        			
 			?>
 			</div>
+			<a href="adminPage.php" class="btn btn-default">Back</a>
+			<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>
 		</div>
-		 <a href="adminPage.php" class="btn btn-default">Back</a>
-	</div>
     </body>
 </html>

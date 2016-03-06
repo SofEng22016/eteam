@@ -34,7 +34,7 @@
 	
 	
 	<div class="container">
-			<div class='page-header'><h1 class='title'>Admin Login</h1></div>
+			<div class='page-header'><h1 class='title'><span class="glyphicon glyphicon-user"></span> Admin Login</h1></div>
 	</div>
 		<div class="container">
 		<div class="well well-lg">
@@ -49,7 +49,7 @@
 		<input type="password" class="form-control" id="pass" name="pass" placeholder="Enter Password"/>
 		</div>
 		
-		<button type="submit" class="btn btn-default" id="login"/>Login</button>
+		<button type="submit" class="btn btn-default" id="login"/><span class="glyphicon glyphicon-log-in"></span> Login</button>
 		
 	</form>
 		

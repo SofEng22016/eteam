@@ -58,10 +58,10 @@ $insert_transaction = <<<EOD
 		<p>PhP <input type="text" name="total" class="num" size="6" value="0" readonly="readonly" /></p>
         <div class="form-group">
         <label>Payment:</label>
-        <input type="number" name="payment" class="form-control" placeholder="Enter Payment"/>
+        <input type="number" name="payment" class="form-control" placeholder="Enter Payment" required="required"/>
         </div>
            		
-        <button type="submit" class="btn btn-default" id="transact" name="transact">Submit</button> 
+        <button type="submit" class="btn btn-default" id="transact" name="transact">Next</button> 
 		<button type="reset" class="btn btn-default">Reset</button>
 
 	</form>
