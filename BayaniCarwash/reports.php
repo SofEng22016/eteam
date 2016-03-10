@@ -38,12 +38,24 @@
 	
 	<div class="container">
 	<div class='page-header'><h1 class='title'><span class="glyphicon glyphicon-stats"></span> Reports</h1></div>
-		
-		<div class ="well well-lg">
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="panel panel-default">
-						<div class="panel-body"><legend>Yearly</legend>
+	
+		<div class ="well well-lg"> 
+
+
+ 			<div class="panel-group" id="accordion">
+
+
+				<div class="panel panel-default">
+
+					 <div class="panel-heading">
+     						 <h4 class="panel-title">
+   						     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+    						   <legend>Yearly</legend></a>
+     						 </h4>
+    				</div>
+					
+					<div id="collapse1" class="panel-collapse collapse in">
+						<div class="panel-body">
 						<?php
 
 									if (isset($_POST['year'])) {
@@ -98,13 +110,23 @@
 							
 							</form>
 							<?php }?>
+						</div>
 					</div>
+
 				</div>
-				</div>
-				<div class="col-sm-6">
+					
 				<div class="panel panel-default">
-						<div class="panel-body"><legend>Monthly</legend>
-						
+
+					    <div class="panel-heading">
+      						<h4 class="panel-title">
+      						  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+    						   <legend>Monthly</legend></a>
+ 					        </h4>
+ 					   </div>
+
+					  <div id="collapse2" class="panel-collapse collapse">
+
+						<div class="panel-body">
 			    			<?php
 
 									if (isset($_POST['month'])) {
@@ -175,19 +197,24 @@
 							</form>
 							<?php }?>
 						</div>
-			
 					</div>
-				
+					
 				</div>
-		</div>
-
-		<div class="row">
-				<div class="col-sm-6">
+					
 					<div class="panel panel-default">
-						<div class="panel-body"><legend>Today</legend>
+
+						 <div class="panel-heading">
+   							   <h4 class="panel-title">
+   							     <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+    								    <legend>Today</legend></a>
+						           </h4>
+   						 </div>
+
+ 					 <div id="collapse3" class="panel-collapse collapse">
+						<div class="panel-body">
 						
 						<?php
-						if (isset($_POST['submitToday'])) {
+						
 							$today = date("Y/m/d");
 							$query = "SELECT * FROM transactions";
 							$result1 = mysqli_query($connect, $query);
@@ -209,27 +236,31 @@
 								echo "<h3><small>($today)</small></h3>";
 								echo "<h3>Frequency of Customers: <mark>$totalCust</mark></h3>";
 								echo "<h3>Profit Earned: <mark>PhP $totalMoney</mark></h3>";
-								
-							}else {
-								echo "<div class='alert alert-danger'>No records found!</div>";
-								 
+	 
+							} else {
+								echo "<h3>No transactions were made today.</h3>";
 							}
-							echo "<a href='reports.php' class='btn btn-default'>Back</a>";
-						}else{
 						?>
-						<form method="POST" role="form">
-						<label>Click button below to view records today:</label>
-								<div class="form-group">
-						<button type="submit" class="btn btn-default" id="submitToday" name="submitToday"/>View</button>
-						</div>
-						</form>
-						<?php }?>
+						
+						
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-6">
+
+
+					</div>
+			
+				
 				<div class="panel panel-default">
-						<div class="panel-body"><legend>Specific Date</legend>
+
+						 <div class="panel-heading">
+ 						     <h4 class="panel-title">
+  							      <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+     								   <legend>Specific Date</legend></a>
+  						    </h4>
+ 					     </div>
+
+						<div id="collapse4" class="panel-collapse collapse">
+						<div class="panel-body">
 						<?php
 
 									if (isset($_POST['date'])) {
@@ -283,13 +314,19 @@
 							
 							</form>
 							<?php }?>
-						</div>
-			
+							</div>
+							</div>
+
 					</div>
-				
-				</div>
-		</div>
-		</div>
+			
+	
+
+
+
+</div>
+
+
+</div> 
 		<a href="adminPage.php" class="btn btn-default">Back</a>
 			<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>
 		</div>
