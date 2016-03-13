@@ -84,6 +84,7 @@
   					
   						
   						echo "<tr class='success'><td>".$row['id']."</td><td>".$custName['fullname']."</td><td>$car</td><td>".$carName['plate_num']."</td><td>".$row['service_id']."</td><td>PhP".$row['total_amount']."</td><td>PhP".$row['payment']."</td><td>PhP".$row['change_']."</td><td>".$row['date']."</td></tr>";
+  						echo "<tr class='warning'><td>Comments: ".$row['comment']."</td></tr>";
   					}
   					echo "</tbody>";
   					echo "</table>";

@@ -60,6 +60,10 @@ $insert_transaction = <<<EOD
         <label>Payment:</label>
         <input type="number" name="payment" class="form-control" placeholder="Enter Payment" required="required"/>
         </div>
+		<div class="form-group">
+		  <label for="comment">Customer Feedback:</label>
+		  <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="What do you think of our service?"></textarea>
+		</div>
            		
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#finish">Finish</button> 
 		<button type="reset" class="btn btn-default">Reset</button>

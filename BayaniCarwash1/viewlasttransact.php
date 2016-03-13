@@ -81,6 +81,7 @@
 					echo "<thead><tr><th>#</th><th>Full Name</th><th>Car</th><th>Plate Num.</th><th>Services Availed</th><th>Total Amount</th><th>Payment</th><th>Change</th><th>Date</th></tr></thead>";
 					echo "<tbody>";
 					echo "<tr class='info'><td>".$row['id']."</td><td>".$custName['fullname']."</td><td>$car</td><td>".$carName['plate_num']."</td><td>".$row['service_id']."</td><td>PhP".$row['total_amount']."</td><td>PhP".$row['payment']."</td><td>PhP".$row['change_']."</td><td>".$row['date']."</td></tr>";
+					echo "<tr class='warning'><td>Comments: ".$row['comment']."</td></tr>";
 					echo "</tbody>";
 					echo "</table>";
 					

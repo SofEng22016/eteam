@@ -8,6 +8,7 @@
 // 		session_start();
 		$payment = $_POST['payment'];
 		$servicesChosen = $_POST['Name'];
+		$comment = $_POST['comment'];
 		if($servicesChosen == 0){
 			$msg="Please tick a service box.";
 			header("location: transaction.php?msg=$msg");
@@ -155,15 +156,11 @@
 				$change = ($payment - $total);
 				$date = date("Y/m/d");
 					
-				$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date) 
-				VALUES ('$services','$recordId','$total', '$payment','$change','$date')";
+				$insert_transaction="INSERT INTO transactions(service_id, record_id, total_amount, payment, change_, date, comment) 
+				VALUES ('$services','$recordId','$total', '$payment','$change','$date','$comment')";
 					
 				mysqli_query($connect,  $insert_transaction);
 				header("location: receipt.php");
-					
-				setcookie('customer', $insert_cust, time()-3600);
-				setcookie('fullName', $fullName, time()-3600);
-				setcookie('car',$insert_car, time()-3600);
 					
 				mysqli_close($connect);
 			}

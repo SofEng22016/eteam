@@ -32,17 +32,16 @@
 	    </ul>
 	  </div>
 	</nav>
-<div class="container">
-		<?php 
+	<?php 
 			if(!isset($_COOKIE['fullName'])){
 				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
-				echo "<h2><center>Redirecting you to the first transaction page...</center></h2>";
-				header("Refresh:3; url=customerform.php");
+				echo "<h2><center>Redirecting you to the customer details page...</center></h2>";
+				header("Refresh:2; url=customerform.php");
 				exit;
 			}else if(!isset($_COOKIE['car'])){
 				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
-				echo "<h2><center>Redirecting you to the first transaction page...</center></h2>";
-				header("Refresh:3; url=carforms.php");
+				echo "<h2><center>Redirecting you to the car details page...</center></h2>";
+				header("Refresh:2; url=carforms.php");
 				exit;
 			}
 			
@@ -54,6 +53,8 @@
 				}
 			}
 		?>
+<div class="container">
+		
 		<div class='page-header'><h1 class='title'>Finish</h1></div>
 		<div class ="well well-lg">
   			<legend>Service Number Legend:</legend>
@@ -123,6 +124,7 @@
 					?>
 					<div class="col-sm-4"><a href= "display-pdf.php" target="_blank"><button type="button" class="btn btn-primary btn btn-lg" id="viewPDF" name="viewPDF" >View Receipt</button></a></div>
 					</div>
+					
 					<?php
 					session_start();
 					$date=date("Y-m-d");
@@ -154,6 +156,15 @@
 					$pdf->Cell(0,10,"",0,1,"C");
 					$pdf->Cell(0,10,"Total Amount: PhP ".$row['change_']."",0,2,"");
 					$pdf->Cell(0,10,"",0,1,"C");
+					$pdf->SetFont("Arial","",30);
+					$pdf->Cell(0,10,"------------------------------------------------------------------",0,1,"C");
+					$pdf->Cell(0,10,"",0,1,"C");
+					$pdf->SetFont("Arial","",20);
+					$pdf->Cell(0,10,"Received by: _______________",0,2,"");
+					$pdf->Cell(0,10,"",0,1,"C");
+					$pdf->SetFont("Arial","",10);
+					$pdf->Cell(0,10,"Any questions? Here's our number: 09XXX-XXXXXX",0,2,"");
+					$pdf->Cell(0,10,"",0,1,"C");
 					$pdf->Output("F","receipts/$timeStamp.pdf");
 					
 					$_SESSION['pdf'] = "$timeStamp.pdf";
@@ -163,15 +174,17 @@
   					echo "<div class='alert alert-danger'>No transactions!</div>";
   					mysqli_close($connect);
   				}
-       			
+
 			?>
 			</div>
+			
 	<ul class="pagination">
   		<li><a href="customerform.php">1</a></li>
   		<li><a href="carforms.php">2</a></li>
 		<li><a href="transaction.php">3</a></li>
 		<li class="active"><a href="receipt.php">4</a></li>
 	</ul> 
+	<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>
 			</div>
 </body>
 </html>
