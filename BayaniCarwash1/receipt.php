@@ -16,6 +16,9 @@
      text-align: left;
 
   }
+  footer{
+     position: absolute;
+  }
   </style>
 </head>
 <body class = "bg">
@@ -234,7 +237,9 @@
 		<li><a href="transaction.php">3</a></li>
 		<li class="active"><a href="receipt.php">4</a></li>
 	</ul> 
-	<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>
-			</div>
+	<footer>
+	<div class='container' align="center"><hr/><i>Powered by E-Team&copy;</i></div>
+	</div>
+	</footer>
 </body>
 </html>

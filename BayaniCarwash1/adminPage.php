@@ -27,6 +27,9 @@
   h1.title{
      text-align: left;
   }
+  footer{
+     position: absolute;
+  }
 
   </style>
 </head>
@@ -72,8 +75,11 @@
     </div>
     
     <hr/>
-    <i>Powered by E-Team&copy;</i>
     
-    </div>
+    <footer>
+    <div class='container' align="center"><hr/><i>Powered by E-Team&copy;</i></div>
+	</footer>
+	</div>
+    
     </body>
 </html>

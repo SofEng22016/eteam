@@ -25,6 +25,9 @@
   h1.title{
      text-align: left;
   }
+  footer{
+     position: absolute;
+  }
   </style>
 </head>
     <body>
@@ -113,7 +116,9 @@
 					
 
 		<a href="adminPage.php" class="btn btn-default">Back</a>
-			<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>
+		<footer>
+			<div class='container' align="center"><hr/><i>Powered by E-Team&copy;</i></div>
+		</footer>
 		</div>
 		
 	

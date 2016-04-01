@@ -22,6 +22,9 @@
      text-align: center;
      font-family: serif;
   }
+  footer{
+     position: absolute;
+  }
   </style>
 </head>
    <body class="bg">
@@ -58,6 +61,10 @@
 </div>
 </div>
 </div>
-<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>
+
+<footer>
+<div class='container' align="center"><hr/><i>Powered by E-Team&copy;</i>
+</div>
+</footer>
    </body>
 </html>
