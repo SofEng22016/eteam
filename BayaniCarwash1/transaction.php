@@ -18,14 +18,52 @@
   footer{
      position: absolute;
   }
+  .progress{
+     height: 40px;;
+  }
   </style>
 
 </head>
    <body class="bg">
-<?php 
-$insert_transaction = <<<EOD
- 	<div class="container">
+<?php
+	echo "<nav class='navbar navbar-inverse'>
+	  <div class='container-fluid'>
+	    <div class='navbar-header'>
+	      <a class='navbar-brand' href='index.php'>Bayani Carwash</a>
+	    </div>
+	    <ul class='nav navbar-nav'>
+	      <li><a href='index.php'>Home</a></li>
+	    </ul>
+	    <ul class='nav navbar-nav navbar-right'>
+	      <li><a href='login.php'><span class='glyphicon glyphicon-user'></span> Admin Login</a></li>
+	    </ul>
+	  </div>
+	</nav>";
+// 		if(!isset($_COOKIE['fullName'])){
+// 			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
+// 			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
+// 			header("Refresh:2; url=customerform.php");
+// 			exit;
+// 		}else if(!isset($_COOKIE['car'])){
+// 			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
+// 			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
+// 			header("Refresh:2; url=carforms.php");
+// 			exit;
+// 		}
+	
+	if(isset($_GET['msg'])){
+		$msg=$_GET['msg'];
+		if($msg!=''){
+			echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
+		
+		}
+	}
+	?>
+	<div class="container">
 		<div class='page-header'><h1 class='title'>Payment</h1></div>
+		<div class="progress progress-striped active">
+  		<div class="progress-bar progress-bar-info" style="width: 75%"></div>
+	</div>
 	<div class="well well-lg">
   	<label>Service Availed:</label>
     <form action="insert_transaction.php" method="post" role="form">
@@ -94,11 +132,11 @@ $insert_transaction = <<<EOD
 	</form>
 		
     </div>
-		<ul class="pagination">
-  		<li><a href="customerform.php">1</a></li>
-  		<li><a href="carforms.php">2</a></li>
-		<li class="active"><a href="transaction.php">3</a></li>
-		<li><a href="receipt.php">4</a></li>
+		<ul class="breadcrumb">
+  		<li><a href="customerform.php">Customer</a></li>
+  		<li><a href="carforms.php">Car</a></li>
+		<li class="active">Payment</li>
+		<li><a href="receipt.php">Finish</a></li>
 		</ul>
 	</div>
 
@@ -149,43 +187,8 @@ $insert_transaction = <<<EOD
 	    form.elements['total'].value = val;
 	}
 	attachCheckboxHandlers();
-	</script>	
-EOD;
-	echo "<nav class='navbar navbar-inverse'>
-	  <div class='container-fluid'>
-	    <div class='navbar-header'>
-	      <a class='navbar-brand' href='index.php'>Bayani Carwash</a>
-	    </div>
-	    <ul class='nav navbar-nav'>
-	      <li><a href='index.php'>Home</a></li>
-	    </ul>
-	    <ul class='nav navbar-nav navbar-right'>
-	      <li><a href='login.php'><span class='glyphicon glyphicon-user'></span> Admin Login</a></li>
-	    </ul>
-	  </div>
-	</nav>";
-		if(!isset($_COOKIE['fullName'])){
-			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
-			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
-			header("Refresh:2; url=customerform.php");
-			exit;
-		}else if(!isset($_COOKIE['car'])){
-			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
-			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
-			header("Refresh:2; url=carforms.php");
-			exit;
-		}
+	</script>
+	<div class='container'><footer><hr/><i>Powered by E-Team&copy;</i></footer></div>
 	
-	if(isset($_GET['msg'])){
-		$msg=$_GET['msg'];
-		if($msg!=''){
-			echo "<div class='alert alert-danger'><strong>Danger!</strong> ".$msg."</div>";
-		
-		}
-	}
-	echo $insert_transaction;
-	
-	echo "<footer><div class='container' align='center'><hr/><i>Powered by E-Team&copy;</i></div></footer>";
-	?>
     </body>
 </html>

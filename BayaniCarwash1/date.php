@@ -26,6 +26,7 @@
      text-align: left;
   }
   footer{
+  bottom:0;
      position: absolute;
   }
   </style>
@@ -116,9 +117,8 @@
 					
 
 		<a href="adminPage.php" class="btn btn-default">Back</a>
-		<footer>
-			<div class='container' align="center"><hr/><i>Powered by E-Team&copy;</i></div>
-		</footer>
+			<div class='container'><footer><hr/><i>Powered by E-Team&copy;</i></footer></div>
+
 		</div>
 		
 	

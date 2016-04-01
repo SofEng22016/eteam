@@ -19,6 +19,9 @@
   footer{
      position: absolute;
   }
+  .progress{
+     height: 40px;;
+  }
   </style>
 </head>
 <body class = "bg">
@@ -36,17 +39,17 @@
 	  </div>
 	</nav>
 	<?php 
-			if(!isset($_COOKIE['fullName'])){
-				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
-				echo "<h2><center>Redirecting you to the customer details page...</center></h2>";
-				header("Refresh:2; url=customerform.php");
-				exit;
-			}else if(!isset($_COOKIE['car'])){
-				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
-				echo "<h2><center>Redirecting you to the car details page...</center></h2>";
-				header("Refresh:2; url=carforms.php");
-				exit;
-			}
+// 			if(!isset($_COOKIE['fullName'])){
+// 				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
+// 				echo "<h2><center>Redirecting you to the customer details page...</center></h2>";
+// 				header("Refresh:2; url=customerform.php");
+// 				exit;
+// 			}else if(!isset($_COOKIE['car'])){
+// 				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
+// 				echo "<h2><center>Redirecting you to the car details page...</center></h2>";
+// 				header("Refresh:2; url=carforms.php");
+// 				exit;
+// 			}
 			
 			if(isset($_GET['msg'])){
 				$msg=$_GET['msg'];
@@ -59,6 +62,9 @@
 <div class="container">
 		
 		<div class='page-header'><h1 class='title'>Finish</h1></div>
+		<div class="progress progress-striped active">
+  		<div class="progress-bar progress-bar-success" style="width: 100%"></div>
+	</div>
 		<div class ="well well-lg">
   			<legend>Service Number Legend:</legend>
   			<div align = "center">
@@ -231,15 +237,15 @@
 			?>
 			</div>
 			
-	<ul class="pagination">
-  		<li><a href="customerform.php">1</a></li>
-  		<li><a href="carforms.php">2</a></li>
-		<li><a href="transaction.php">3</a></li>
-		<li class="active"><a href="receipt.php">4</a></li>
+	<ul class="breadcrumb">
+  		<li><a href="customerform.php">Customer</a></li>
+  		<li><a href="carforms.php">Car</a></li>
+		<li><a href="transaction.php">Payment</a></li>
+		<li class="active">Finish</li>
 	</ul> 
-	<footer>
-	<div class='container' align="center"><hr/><i>Powered by E-Team&copy;</i></div>
-	</div>
-	</footer>
+	
+	<div class='container'><footer><hr/><i>Powered by E-Team&copy;</i></footer></div>
+
+	
 </body>
 </html>

@@ -11,7 +11,9 @@
 			$fullName = $firstName." ".$lastName;
 		
 		$tel = $_POST['telephoneNum'];
-		$cell = $_POST['cellphoneNum'];
+		$cellType = $_POST['cellphoneNum'];
+// 		$cellNum;
+// 		$cell=$cellType.$cellNum;
 		$email = $_POST['email'];
 		
 		$firstName = stripslashes($firstName); // removes quotes/un-quote marks on string
@@ -23,6 +25,9 @@
 		$email = stripslashes($email);
 		
 		if($tel <= 0){
+			$msg="Invalid Phone Number.";
+			header("location: customerform.php?msg=$msg");
+		}else if($cell != 0 ){
 			$msg="Invalid Phone Number.";
 			header("location: customerform.php?msg=$msg");
 		}else{
