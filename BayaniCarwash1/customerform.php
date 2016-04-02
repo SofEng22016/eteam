@@ -19,6 +19,9 @@
   footer{
      position: absolute;
   }
+  .progress{
+     height: 40px;;
+  }
   </style>
 </head>
 <body class = "bg">
@@ -27,6 +30,9 @@ $insert_customer = <<<EOD
 
   	<div class="container">
 		<div class='page-header'><h1 class='title'>Customer Info</h1></div>
+		<div class="progress progress-striped active">
+  		<div class="progress-bar progress-bar-info" style="width: 25%"></div>
+	</div>
 	<div class="well well-lg">
   	<form method="POST" action="insert_customer.php" role="form">
    
@@ -47,13 +53,14 @@ $insert_customer = <<<EOD
     <button type="submit" class="btn btn-default" id="customerEntry" name="customerEntry" >Next</button>
 	<button type="submit" class="btn btn-default" id="resetCustomerForm" name="resetCustomerForm">Reset</button>
 	</form>
-	
 	</div>
-		<ul class="pagination">
-  		<li class="active"><a href="customerform.php">1</a></li>
-  		<li><a href="carforms.php">2</a></li>
-		<li><a href="transaction.php">3</a></li>
-		<li><a href="receipt.php">4</a></li>
+		
+		
+		<ul class="breadcrumb">
+  		<li class="active">Customer</li>
+  		<li><a href="carforms.php">Car</a></li>
+		<li><a href="transaction.php">Payment</a></li>
+		<li><a href="receipt.php">Finish</a></li>
 		</ul> 
 	</div>
 EOD;
@@ -81,7 +88,8 @@ EOD;
 	}
 	echo $insert_customer;
 	
-	echo "<footer><div class='container' align='center'><hr/><i>Powered by E-Team&copy;</i></div></footer>";	
+	echo "<div class='container'><footer><hr/><i>Powered by E-Team&copy;</i><footer></div>";
+	
 	?>
 </body>
 </html>

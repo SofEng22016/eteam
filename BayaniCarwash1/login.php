@@ -28,6 +28,7 @@
   }
   footer{
      position: absolute;
+     bottom:0;
   }
   
   </style>
@@ -87,7 +88,7 @@ EOD;
 		echo $login_form;
 		
 		
-		echo "<footer><div class='container' align='center'><hr/><i>Powered by E-Team&copy;</i></div></footer>";
+		echo "<div class='container'><footer><hr/><i>Powered by E-Team&copy;</i></footer></div>";
 	
 		?>
 </body>
