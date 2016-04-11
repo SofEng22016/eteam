@@ -28,6 +28,7 @@
 $insert_car = <<<EOD
 
   	<div class="container">
+		<h1><u>Step 2:</u></h1>
 		<div class='page-header'><h1 class='title'>Car Details</h1></div>
 		<div class="progress progress-striped active">
   		<div class="progress-bar progress-bar-info" style="width: 50%"></div>

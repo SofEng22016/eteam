@@ -29,7 +29,8 @@
 $insert_customer = <<<EOD
 
   	<div class="container">
-		<div class='page-header'><h1 class='title'>Customer Info</h1></div>
+		<h1><u>Step 1:</u></h1>
+		<div class='page-header'><h2 class='title'>Customer Info</h2></div>
 		<div class="progress progress-striped active">
   		<div class="progress-bar progress-bar-info" style="width: 25%"></div>
 	</div>
@@ -45,9 +46,55 @@ $insert_customer = <<<EOD
     
     <div class="form-group">
    	<label>Customer Contact Details</label>
-    <input type="number" class="form-control" id="telephoneNum" name="telephoneNum" placeholder="Enter Telephone Number" 
-    		required="required" max="9999999">
-    <input type="number" class="form-control" id="cellphoneNum" name="cellphoneNum" placeholder="Enter Cellphone Number">
+	<input type="number" class="form-control" id="telephoneNum" name="telephoneNum" placeholder="Enter Telephone Number" 
+    		required="required">
+
+	<div class="row">
+		<div class="col-sm-2"><select class="form-control" id="subscription" name="subscription">
+				<optgroup label="GLOBE">
+				<option value="0905">0905</option>
+				<option value="0906">0906</option>
+				<option value="0915">0915</option>
+				<option value="0916">0916</option>
+				<option value="0917">0917</option>
+				<option value="0925">0925</option>
+				<option value="0926">0926</option>
+				<option value="0927">0927</option>
+				<option value="0935">0935</option>
+				<option value="0936">0936</option>
+				<option value="0937">0937</option>
+				<option value="0996">0996</option>
+				<option value="0997">0997</option>
+				</optgroup>
+				<optgroup label="SUN CELLULAR">
+				<option value="0922">0922</option>
+				<option value="0923">0923</option>
+				<option value="0932">0932</option>
+				<option value="0933">0933</option>
+				<option value="0942">0942</option>
+				<option value="0943">0943</option>
+				<optgroup label="SMART/TnT">
+				<option value="0907">0907</option>
+				<option value="0908">0908</option>
+				<option value="0909">0909</option>
+				<option value="0910">0910</option>
+				<option value="0912">0912</option>
+				<option value="0918">0918</option>
+				<option value="0919">0919</option>
+				<option value="0920">0920</option>
+				<option value="0921">0921</option>
+				<option value="0928">0928</option>
+				<option value="0929">0929</option>
+				<option value="0930">0930</option>
+				<option value="0938">0938</option>
+				<option value="0939">0939</option>
+				<option value="0989">0989</option>
+				<option value="0999">0999</option>
+				<option value="0948">0948</option>
+				<option value="0949">0949</option>
+	      </select></div>
+		
+    <div class="col-sm-10"><input type="number" class="form-control" id="cellphoneNum" name="cellphoneNum" placeholder="Enter Cellphone Number"></div></div>
     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address">
     </div>
     <button type="submit" class="btn btn-default" id="customerEntry" name="customerEntry" >Next</button>

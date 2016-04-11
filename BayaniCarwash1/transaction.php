@@ -39,17 +39,17 @@
 	    </ul>
 	  </div>
 	</nav>";
-// 		if(!isset($_COOKIE['fullName'])){
-// 			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
-// 			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
-// 			header("Refresh:2; url=customerform.php");
-// 			exit;
-// 		}else if(!isset($_COOKIE['car'])){
-// 			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
-// 			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
-// 			header("Refresh:2; url=carforms.php");
-// 			exit;
-// 		}
+		if(!isset($_COOKIE['fullName'])){
+			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
+			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
+			header("Refresh:2; url=customerform.php");
+			exit;
+		}else if(!isset($_COOKIE['car']) && !isset($_COOKIE['plate'])){
+			echo "<div class='alert alert-danger'><strong>Warning!</strong> Missing Details</div>";
+			echo "<h2><center>Redirecting you to the previous page...</center></h2>";
+			header("Refresh:2; url=carforms.php");
+			exit;
+		}
 	
 	if(isset($_GET['msg'])){
 		$msg=$_GET['msg'];
@@ -60,6 +60,7 @@
 	}
 	?>
 	<div class="container">
+	<h1><u>Step 3:</u></h1>
 		<div class='page-header'><h1 class='title'>Payment</h1></div>
 		<div class="progress progress-striped active">
   		<div class="progress-bar progress-bar-info" style="width: 75%"></div>

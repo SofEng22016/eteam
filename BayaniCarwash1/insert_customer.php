@@ -11,25 +11,33 @@
 			$fullName = $firstName." ".$lastName;
 		
 		$tel = $_POST['telephoneNum'];
-		$cellType = $_POST['cellphoneNum'];
-// 		$cellNum;
-// 		$cell=$cellType.$cellNum;
+		$cellType = $_POST['subscription'];
+		$cellNum = $_POST['cellphoneNum'];
+		$cell;
+		if(isset($_POST['cellphoneNum'])){
+			$cell=$cellType.$cellNum;
+		}else{
+			$cell="None";
+		}
+		
 		$email = $_POST['email'];
 		
-		$firstName = stripslashes($firstName); // removes quotes/un-quote marks on string
-		$lastName = stripslashes($lastName);
-		$middleName = stripslashes($middleName);
+		$firstName = mysql_real_escape_string($firstName); // removes quotes/un-quote marks on string
+		$lastName = mysql_real_escape_string($lastName);
+		$middleName = mysql_real_escape_string($middleName);
 		
-		$tel = stripslashes($tel);
-		$cell = stripslashes($cell);
-		$email = stripslashes($email);
+		$tel = mysql_real_escape_string($tel);
+		$cell = mysql_real_escape_string($cell);
+		$email = mysql_real_escape_string($email);
 		
-		if($tel <= 0){
-			$msg="Invalid Phone Number.";
+		if($tel < 1000000 || $tel > 9999999){
+			$msg="Invalid Telephone Number.";
 			header("location: customerform.php?msg=$msg");
-		}else if($cell != 0 ){
-			$msg="Invalid Phone Number.";
-			header("location: customerform.php?msg=$msg");
+		}else if($cell=="None"){
+			if($cellNum < 1000000 || $cellNum > 9999999){
+				$msg="Invalid Cellphone Number.";
+				header("location: customerform.php?msg=$msg");
+			}
 		}else{
 			
 			$customerCheck = "SELECT * FROM customers WHERE fullname = '$fullName'";

@@ -25,16 +25,11 @@
   h1.title{
      text-align: left;
   }
-<<<<<<< HEAD
-=======
   footer{
   
      position: absolute;
   }
->>>>>>> 6689d639902490b1c29add50739c5c3397602960
   </style>
-  
-  
 </head>
     <body>
 
@@ -75,19 +70,21 @@
   			<?php 
   				define('DOC_ROOT', dirname(__FILE__));
 				include (DOC_ROOT.'/config.php');
-  				
+				
+				if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+				$num_rec_per_page=10;
+				$start_from = ($page-1) * $num_rec_per_page;
   				$query = "select * from transactions";
   				$result1 = mysqli_query($connect, $query);
   				$lastId = (mysqli_num_rows($result1));
-  				$query = "select * from transactions where id='$lastId'";
+  				$query = "SELECT * FROM transactions LIMIT $start_from, $num_rec_per_page";
   				$result = mysqli_query($connect, $query);
   				if($lastId > 0) {
   						
 						echo "<table class='table table-striped table-hover'>";
 						echo "<thead><tr><th>#</th><th>Full Name</th><th>Car</th><th>Plate Num.</th><th>Services Availed</th><th>Total Amount</th><th>Payment</th><th>Change</th><th>Date</th></tr></thead>";
 						echo "<tbody>";
-  					$row = mysqli_fetch_assoc($result);
-  					while ($row = mysqli_fetch_array($result1)) {
+  					while ($row = mysqli_fetch_assoc($result)) {
 	  					$getCustID = "SELECT * FROM records WHERE id = '".$row['record_id']."'";
 	  					$get = mysqli_query($connect, $getCustID);
 	  					$ID = mysqli_fetch_assoc($get);
@@ -100,13 +97,33 @@
 	  					$get = mysqli_query($connect, $getCar);
 	  					$carName = mysqli_fetch_assoc($get);
 	  					$car = $carName['color']." ".$carName['manufacturer']." ".$carName['model'];
-  					
   						
   						echo "<tr class='success'><td> ".$row['id']."</td><td>".$custName['fullname']."</td><td>$car</td><td>".$carName['plate_num']."</td><td>".$row['service_id']."</td><td>PhP".$row['total_amount']."</td><td>PhP".$row['payment']."</td><td>PhP".$row['change_']."</td><td>".$row['date']."</td></tr>";
   						echo "<tr class='warning'><td>Comments: </td><td>".$row['comment']."</td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td> </tr>";
+
   					}
   					echo "</tbody>";
   					echo "</table>";
+
+  					$sql = "SELECT * FROM transactions";
+  					$rs_result = mysqli_query($connect,$sql);
+  					$total_records = mysqli_num_rows($rs_result);
+  					$total_pages = ceil($total_records / $num_rec_per_page);
+  					
+  					echo "<ul class='pagination'>";
+  					echo "<li><a href='viewtransactions.php?page=1'>|<</a></li>"; // Goto 1st page
+  					
+  					for ($ctr=1; $ctr<=$total_pages; $ctr++) {
+						
+						if($ctr==$page){
+							echo "<li class='active'><a href='viewtransactions.php?page=".$ctr."'>".$ctr."</a></li>";
+						}else{
+  							echo "<li><a href='viewtransactions.php?page=".$ctr."'>".$ctr."</a></li>";
+  						}
+  					};
+  					echo "<li><a href='viewtransactions.php?page=$total_pages'>>|</a></li>"; // Goto last page
+  					echo "</ul>";
+
   					mysqli_close($connect);
   				}else {
   					echo "<div class='alert alert-danger'>No transactions!</div>";
@@ -114,12 +131,12 @@
   				}
        			
 			?>
-			</div>
+		</div>
 			<a href="adminPage.php" class="btn btn-default">Back</a>
-
-			<div class='container'><hr/><i>Powered by E-Team&copy;</i></div>
 			
-
+			
+			<div class='container'><footer><hr/><i>Powered by E-Team&copy;</i></footer></div>
+			
 		</div>
     </body>
 </html>

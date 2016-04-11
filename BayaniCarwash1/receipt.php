@@ -39,17 +39,17 @@
 	  </div>
 	</nav>
 	<?php 
-// 			if(!isset($_COOKIE['fullName'])){
-// 				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
-// 				echo "<h2><center>Redirecting you to the customer details page...</center></h2>";
-// 				header("Refresh:2; url=customerform.php");
-// 				exit;
-// 			}else if(!isset($_COOKIE['car'])){
-// 				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
-// 				echo "<h2><center>Redirecting you to the car details page...</center></h2>";
-// 				header("Refresh:2; url=carforms.php");
-// 				exit;
-// 			}
+			if(!isset($_COOKIE['fullName'])){
+				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
+				echo "<h2><center>Redirecting you to the customer details page...</center></h2>";
+				header("Refresh:2; url=customerform.php");
+				exit;
+			}else if(!isset($_COOKIE['car']) && !isset($_COOKIE['plate'])){
+				echo "<div class='alert alert-danger'><strong>Warning!</strong>It seems you have jumped to this page without transacting.</div>";
+				echo "<h2><center>Redirecting you to the car details page...</center></h2>";
+				header("Refresh:2; url=carforms.php");
+				exit;
+			}
 			
 			if(isset($_GET['msg'])){
 				$msg=$_GET['msg'];
@@ -60,7 +60,7 @@
 			}
 		?>
 <div class="container">
-		
+		<h1><u>Step 4:</u></h1>
 		<div class='page-header'><h1 class='title'>Finish</h1></div>
 		<div class="progress progress-striped active">
   		<div class="progress-bar progress-bar-success" style="width: 100%"></div>
@@ -139,6 +139,12 @@
 					?>
 					<div class="col-sm-4"><a href= "display-pdf.php" target="_blank"><button type="button" class="btn btn-primary btn btn-lg" id="viewPDF" name="viewPDF" >View Receipt</button></a></div>
 					</div>
+					<?php
+	setcookie('customer','', time()-3600);
+	setcookie('fullName','', time()-3600);
+	setcookie('car','', time()-3600);
+	setcookie('plate','', time()-3600);
+?>
 					
 					<?php
 						$service;

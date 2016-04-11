@@ -52,8 +52,18 @@
 		<div class ="well well-lg">
   			<legend>Service Number Legend:</legend>
   			<div align = "center">
-  			<h3>1<small> - Wash (PhP100)</small> 2<small> - Wax (PhP140)</small> 3<small> - Asphalt Removal (PhP80)</small> 4<small> - Armor All (PhP80)</small></h3>
-  			<h3>5<small> - Vacuum (PhP80)</small> 6<small> - Tire Black (PhP300)</small> 7<small> - Interior Detailing (PhP3000)</small> 8<small> - Exterior Detailing (PhP3500)</small></h3>
+  			<h3>
+  			1<small><font color="#cc3300"> - Wash (PhP100)</font></small> 
+  			2<small><font color="#cc3300"> - Wax (PhP140)</font></small> 
+  			3<small><font color="#cc3300"> - Asphalt Removal (PhP80)</font></small> 
+  			4<small><font color="#cc3300"> - Armor All (PhP80)</font></small>
+  			</h3>
+  			<h3>
+  			5<small><font color="#cc3300"> - Vacuum (PhP80)</font></small> 
+  			6<small><font color="#cc3300"> - Tire Black (PhP300)</font></small> 
+  			7<small><font color="#cc3300"> - Interior Detailing (PhP3000)</font></small> 
+  			8<small><font color="#cc3300"> - Exterior Detailing (PhP3500)</font></small>
+  			</h3>
   			</div>
   			<hr/>
   			<?php 
@@ -84,8 +94,8 @@
 					echo "<table class='table table-striped table-hover '>";
 					echo "<thead><tr><th>#</th><th>Full Name</th><th>Car</th><th>Plate Num.</th><th>Services Availed</th><th>Total Amount</th><th>Payment</th><th>Change</th><th>Date</th></tr></thead>";
 					echo "<tbody>";
-					echo "<tr class='info'><td>".$row['id']."</td><td>".$custName['fullname']."</td><td>$car</td><td>".$carName['plate_num']."</td><td>".$row['service_id']."</td><td>PhP".$row['total_amount']."</td><td>PhP".$row['payment']."</td><td>PhP".$row['change_']."</td><td>".$row['date']."</td></tr>";
-					echo "<tr class='warning'><td>Comments: ".$row['comment']."</td></tr>";
+					echo "<tr class='success'><td> ".$row['id']."</td><td>".$custName['fullname']."</td><td>$car</td><td>".$carName['plate_num']."</td><td>".$row['service_id']."</td><td>PhP".$row['total_amount']."</td><td>PhP".$row['payment']."</td><td>PhP".$row['change_']."</td><td>".$row['date']."</td></tr>";
+  						echo "<tr class='warning'><td>Comments: </td><td>".$row['comment']."</td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td> </tr>";
 					echo "</tbody>";
 					echo "</table>";
 					

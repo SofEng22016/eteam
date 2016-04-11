@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start(); // starts the session
 
 	if(isset($_SESSION['loginUser'])){// checks if the session was registered
@@ -91,5 +91,8 @@ EOD;
 		echo "<div class='container'><footer><hr/><i>Powered by E-Team&copy;</i></footer></div>";
 	
 		?>
+        
+	</div>
+</div>
 </body>
 </html>

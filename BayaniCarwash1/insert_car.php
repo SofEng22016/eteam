@@ -11,8 +11,13 @@
 		$carModel = $_POST['carModel'];
 		$carColor = $_POST['carColor'];
 		$fullName = $_COOKIE['fullName'];
-		
 		$carPlateNum = $_POST['carPlateNum'];
+		
+		$carManufacturer = mysql_real_escape_string($carManufacturer); // removes quotes/un-quote marks on string
+		$carModel = mysql_real_escape_string($carModel);
+		$carColor = mysql_real_escape_string($carColor);
+		$carPlateNum = mysql_real_escape_string($carPlateNum);
+		
 		$plateChecker = "SELECT * FROM cars WHERE plate_num = '$carPlateNum'";
 		$check = mysqli_query($connect, $plateChecker);
 		
@@ -20,19 +25,13 @@
 // 			$msg = "There is a plate number already registered.";
 // 			header("location: carforms.php?msg=$msg");
 // 		}else{
-		
-			$carManufacturer = stripslashes($carManufacturer); // removes quotes/un-quote marks on string
-			$carModel = stripslashes($carModel);
-			$carColor = stripslashes($carColor);
-			
-			$carPlateNum = stripslashes($carPlateNum);
 			
 			$carCheck = "SELECT * FROM cars WHERE plate_num = '$carPlateNum' AND fullname = '$fullName'";
 			$result = mysqli_query($connect, $carCheck);
 				
 			if(mysqli_num_rows($result) > 0){
 				setcookie('fullName', $fullName);
-				setcookie('car', $carPlateNum);
+				setcookie('plate', $carPlateNum);
 			}else{
 			
 				$insert_car = "INSERT INTO cars (plate_num, color, manufacturer, model,fullname)

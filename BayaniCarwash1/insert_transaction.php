@@ -9,6 +9,9 @@
 		$payment = $_POST['payment'];
 		$servicesChosen = $_POST['Name'];
 		$comment = $_POST['comment'];
+		
+		$comment = mysql_real_escape_string($comment);
+		$payment = mysql_real_escape_string($payment);
 		if($servicesChosen == 0){
 			$msg="Please tick a service box.";
 			header("location: transaction.php?msg=$msg");
@@ -18,6 +21,8 @@
 		}else{
 
 			if(isset($_COOKIE['customer']) && isset($_COOKIE['car'])){
+				
+				// no existing record
 		
 				mysqli_select_db($dbName);
 				$insertCust = mysqli_query($connect, $_COOKIE['customer']);
@@ -57,6 +62,9 @@
 				
 				
 			}else if(!isset($_COOKIE['customer']) && isset($_COOKIE['car'])){
+				
+				// existing customer, not existing car
+				
 				mysqli_select_db($dbName);
 				$plate = $_COOKIE['plate'];
 					$insertCar = mysqli_query($connect, $_COOKIE['car']);
@@ -117,7 +125,7 @@
 				}
 			
 				$fullName = $_COOKIE['fullName'];
-				$plate = $_COOKIE['car'];
+				$plate = $_COOKIE['plate'];
 				
 				$selectCust = "SELECT customers.id FROM customers WHERE fullname = '$fullName'";
 				$cust = mysqli_query($connect, $selectCust);
