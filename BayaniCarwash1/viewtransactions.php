@@ -77,7 +77,7 @@
   				$query = "select * from transactions";
   				$result1 = mysqli_query($connect, $query);
   				$lastId = (mysqli_num_rows($result1));
-  				$query = "SELECT * FROM transactions LIMIT $start_from, $num_rec_per_page";
+  				$query = "SELECT * FROM transactions ORDER BY id DESC LIMIT $start_from, $num_rec_per_page";
   				$result = mysqli_query($connect, $query);
   				if($lastId > 0) {
   						
@@ -85,6 +85,7 @@
 						echo "<thead><tr><th>#</th><th>Full Name</th><th>Car</th><th>Plate Num.</th><th>Services Availed</th><th>Total Amount</th><th>Payment</th><th>Change</th><th>Date</th></tr></thead>";
 						echo "<tbody>";
   					while ($row = mysqli_fetch_assoc($result)) {
+  						
 	  					$getCustID = "SELECT * FROM records WHERE id = '".$row['record_id']."'";
 	  					$get = mysqli_query($connect, $getCustID);
 	  					$ID = mysqli_fetch_assoc($get);

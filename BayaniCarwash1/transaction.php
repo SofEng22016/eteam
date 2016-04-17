@@ -99,8 +99,10 @@
 		
 		<p>PhP <input type="text" name="total" class="num" size="6" value="0" readonly="readonly" /></p>
         <div class="form-group">
+        
+        <div id="bayad">
         <label>Payment:</label>
-        <input type="number" name="payment" class="form-control" placeholder="Enter Payment" required="required"/>
+        <input type="number" name="payment" class="form-control" placeholder="Enter Payment" required="required"/></div>
         </div>
 		<div class="form-group">
 		  <label for="comment">Customer Feedback:</label>
